@@ -1,0 +1,8 @@
+@startuml
+
+entity "interview_type"{
+    + interview_type_id
+    + name
+}
+
+@enduml

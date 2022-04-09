@@ -1,0 +1,11 @@
+@startuml
+
+entity "interview"{
+    + interview_id
+    + interview_date
+    + interview_way
+    + interview_target_type
+    + comment
+}
+
+@enduml

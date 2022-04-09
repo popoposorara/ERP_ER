@@ -1,0 +1,9 @@
+@startuml
+
+entity "staff"{
+    + staff_id
+    + kname1
+    + kname2
+}
+
+@enduml

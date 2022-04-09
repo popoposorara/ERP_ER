@@ -1,0 +1,7 @@
+@startuml
+
+entity "student"{
+    + student_id
+}
+
+@enduml
