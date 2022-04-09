@@ -1,0 +1,13 @@
+@startuml
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/main/Entity/$source?raw=true
+!endprocedure
+
+$include("branch.pu")
+$include("customer.pu")
+$include("interview_type.pu")
+$include("interview.pu")
+$include("staff.pu")
+$include("student.pu")
+
+@enduml
