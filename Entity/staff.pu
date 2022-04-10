@@ -1,0 +1,9 @@
+@startuml
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+@enduml

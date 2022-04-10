@@ -1,0 +1,16 @@
+@startuml
+
+entity "interview"{
+    + interview_id:生徒指導記録ID
+    + interview_date:日付と開始時刻
+    + interview_way:対応方法
+    + interview_target_type:対応相手の種別
+    + comment:内容
+    + claim:内容{相談・要望}
+    + student_id:該当生徒ID -> student.student_id
+    + branch_id:学校ID -> branch.branch_id
+    + interview_type_id:対応内容ID -> interview_type.interview_type_id
+    + staff_id:担当者ID -> staff.staff_id
+}
+
+@enduml

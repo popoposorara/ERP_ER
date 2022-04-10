@@ -1,0 +1,7 @@
+@startuml
+
+entity "customer"{
+    + customer_id:顧客ID
+}
+
+@enduml

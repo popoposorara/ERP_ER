@@ -1,0 +1,8 @@
+@startuml
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+@enduml

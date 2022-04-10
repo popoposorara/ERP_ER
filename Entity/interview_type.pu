@@ -1,0 +1,8 @@
+@startuml
+
+entity "interview_type"{
+    + interview_type_id:対応方法ID
+    + name:対応内容
+}
+
+@enduml

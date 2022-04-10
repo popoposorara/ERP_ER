@@ -1,0 +1,21 @@
+@startuml
+hide empty members
+
+!$branch="create-student_guidance_record" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+$include("branch.pu")
+$include("customer.pu")
+$include("interview_type.pu")
+$include("interview.pu")
+$include("staff.pu")
+$include("student.pu")
+
+interview ||--|| student
+interview ||--|| branch
+interview ||--|| interview_type
+interview ||--|| staff
+
+@enduml
