@@ -1,0 +1,41 @@
+name: Auto Generate
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  status: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
+    - name: Run Script
+      run: |
+        kotlin ./.github/workflows/AutoGenerate.kts
+    - name: commit & push
+      run: |
+        git add -N . # 新規ファイルを含める
+        if ! git diff --exit-code --quiet
+        then
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add .
+          git commit -m "generate file"
+          git push
+        fi
+           
