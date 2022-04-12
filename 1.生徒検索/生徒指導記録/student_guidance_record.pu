@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="create-student_guidance_record" 
+!$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
