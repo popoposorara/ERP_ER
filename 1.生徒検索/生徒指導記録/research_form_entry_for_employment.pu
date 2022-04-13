@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="research_form_entry2" 
+!$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
