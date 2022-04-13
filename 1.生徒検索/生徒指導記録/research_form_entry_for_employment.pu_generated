@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "指導要録入力" as input_of_instructional_records {
+package "調査書入力（就職用）" as research_form_entry_for_employment {
 
 entity "branch" {
     + branch_id:学校ID
@@ -41,6 +41,31 @@ entity "student_record_comment"{
     + comment: 備考
 }
 
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
 entity "student_record_comment_attendance"{
     + student_record_comment_attendance_id:出席ID
     + :年度
@@ -61,42 +86,20 @@ entity "student_record_comment_attendance"{
     + :出席日数
 }
 
-entity "student_record_comment_integrated_learning_time_activity"{
-    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
-    + :学習活動
-    + :評価
+entity "student_medical_checkup"{
+    + student_medical_checkup_id:身体状況ID
+    + height:身長
+    + weight:体重
+    + right_eyesight_char:視力(右)
+    + left_eyesight_char:視力(左)
+    + right_hearing:聴力(右)
+    + left_hearing:聴力(左)
+    + comment:備考
 }
 
-entity "student_record_comment_special_activities"{
-    + student_record_comment_special_activities_id:特別活動の記録ID
-    + :年度
-    + :内容
-}
-
-entity "student_record_comment_various_matters"{
-    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
-    + :年度
-    + :学習における特徴等・行動の特徴、特技等
-    + :部活動・ボランティア活動等・取得資格、特技等
-    + :その他
-}
-
-entity "staff"{
-    + staff_id:スタッフID
-    + kname1:名前1
-    + kname2:名前2
-}
-
-entity "student"{
-    + student_id:生徒ID
-    + [生徒番号]
-    + [学籍番号]
-    + [所属校]
-    + [生徒氏名カナ]
-    + [生徒氏名]
-    + [担任]
-    + [主コース]
-    + [生徒区分] 
+entity "student_strengths"{
+    + student_strengths_id:本人の長所・推薦事由等ID
+    + comment:内容
 }
 
 
@@ -104,10 +107,10 @@ entity "student"{
 
 student_record ||--|| student
 student_record ||--|| student_record_comment
-student_record_comment ||--o{ student_record_comment_attendance
-student_record_comment ||--o| student_record_comment_integrated_learning_time_activity
-student_record_comment ||--o{ student_record_comment_special_activities
-student_record_comment ||--o{ student_record_comment_various_matters
+student_record_comment ||--|{ student_record_comment_special_activities
+student_record_comment ||--|{ student_record_comment_attendance
+student_record_comment ||--o| student_medical_checkup
+student_record_comment ||--o| student_strengths
 student_record ||--|{ staff
 
 @enduml
