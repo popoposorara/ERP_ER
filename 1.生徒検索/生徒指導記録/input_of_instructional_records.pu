@@ -6,6 +6,8 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
+package "指導要録入力" as input_of_instructional_records {
+
 $include("branch.pu")
 $include("customer.pu")
 $include("student_record.pu")
@@ -16,6 +18,8 @@ $include("student_record_comment_special_activities.pu")
 $include("student_record_comment_various_matters.pu")
 $include("staff.pu")
 $include("student.pu")
+
+}
 
 student_record ||--|| student
 student_record ||--|| student_record_comment
