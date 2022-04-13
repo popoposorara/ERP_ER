@@ -84,6 +84,7 @@ entity "student_record_comment_attendance"{
     + :事故欠（届）  
     + :事故欠（無）
     + :出席日数
+    + branch_id:学校ID -> branch_id
 }
 
 entity "student_medical_checkup"{
@@ -107,10 +108,11 @@ entity "student_strengths"{
 
 student_record ||--|| student
 student_record ||--|| student_record_comment
-student_record_comment ||--|{ student_record_comment_special_activities
-student_record_comment ||--|{ student_record_comment_attendance
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_attendance
 student_record_comment ||--o| student_medical_checkup
 student_record_comment ||--o| student_strengths
+student_record_comment_attendance ||--|| branch
 student_record ||--|{ staff
 
 @enduml
