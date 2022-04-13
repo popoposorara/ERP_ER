@@ -1,0 +1,9 @@
+@startuml
+
+entity "student_record_comment_integrated_learning_time_content"{
+    + student_record_comment_integrated_learning_time_content_id:総合的な学習の時間の内容・評価ID
+    + :学習活動
+    + :評価
+}
+
+@enduml

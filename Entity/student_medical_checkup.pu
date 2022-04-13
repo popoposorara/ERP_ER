@@ -1,0 +1,14 @@
+@startuml
+
+entity "student_medical_checkup"{
+    + student_medical_checkup_id:身体状況ID
+    + height:身長
+    + weight:体重
+    + right_eyesight_char:視力(右)
+    + left_eyesight_char:視力(左)
+    + right_hearing:聴力(右)
+    + left_hearing:聴力(左)
+    + comment:備考
+}
+
+@enduml
