@@ -1,0 +1,8 @@
+@startuml
+
+entity "student_strengths"{
+    + student_strengths_id:本人の長所・推薦事由等ID
+    + comment:内容
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+entity "student_record_comment_attendance"{
+    + student_record_comment_attendance_id:出席ID
+    + :年度
+    + :欠席日数
+    + :欠席の主な内容
+    + :出校記録
+    + :備考
+    + :内容
+    + :授業日数
+    + :休学日数
+    + :出席停止日数
+    + :忌引き日数
+    + :留学授業日数
+    + :出席しなければならない日数
+    + :病欠日数
+    + :事故欠（届）  
+    + :事故欠（無）
+    + :出席日数
+}
+
+@enduml

@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "指導要録入力" as input_of_instructional_records {
+package "調査書入力（進学用）" as research_form_entry_for_further_education {
 
 entity "branch" {
     + branch_id:学校ID
@@ -41,6 +41,25 @@ entity "student_record_comment"{
     + comment: 備考
 }
 
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
 entity "student_record_comment_attendance"{
     + student_record_comment_attendance_id:出席ID
     + :年度
@@ -61,12 +80,6 @@ entity "student_record_comment_attendance"{
     + :出席日数
 }
 
-entity "student_record_comment_integrated_learning_time_activity"{
-    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
-    + :学習活動
-    + :評価
-}
-
 entity "student_record_comment_special_activities"{
     + student_record_comment_special_activities_id:特別活動の記録ID
     + :年度
@@ -81,22 +94,10 @@ entity "student_record_comment_various_matters"{
     + :その他
 }
 
-entity "staff"{
-    + staff_id:スタッフID
-    + kname1:名前1
-    + kname2:名前2
-}
-
-entity "student"{
-    + student_id:生徒ID
-    + [生徒番号]
-    + [学籍番号]
-    + [所属校]
-    + [生徒氏名カナ]
-    + [生徒氏名]
-    + [担任]
-    + [主コース]
-    + [生徒区分] 
+entity "student_record_comment_integrated_learning_time_content"{
+    + student_record_comment_integrated_learning_time_content_id:総合的な学習の時間の内容・評価ID
+    + :学習活動
+    + :評価
 }
 
 
@@ -105,9 +106,9 @@ entity "student"{
 student_record ||--|| student
 student_record ||--|| student_record_comment
 student_record_comment ||--o{ student_record_comment_attendance
-student_record_comment ||--o| student_record_comment_integrated_learning_time_activity
 student_record_comment ||--o{ student_record_comment_special_activities
 student_record_comment ||--o{ student_record_comment_various_matters
+student_record_comment ||--o| student_record_comment_integrated_learning_time_content
 student_record ||--|{ staff
 
 @enduml
