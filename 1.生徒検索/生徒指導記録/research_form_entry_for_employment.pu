@@ -24,10 +24,11 @@ $include("student_strengths.pu")
 
 student_record ||--|| student
 student_record ||--|| student_record_comment
-student_record_comment ||--|{ student_record_comment_special_activities
-student_record_comment ||--|{ student_record_comment_attendance
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_attendance
 student_record_comment ||--o| student_medical_checkup
 student_record_comment ||--o| student_strengths
+student_record_comment_attendance ||--|| branch
 student_record ||--|{ staff
 
 @enduml
