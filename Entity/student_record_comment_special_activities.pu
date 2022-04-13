@@ -1,0 +1,9 @@
+@startuml
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
+@enduml

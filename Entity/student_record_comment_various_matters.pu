@@ -1,0 +1,11 @@
+@startuml
+
+entity "student_record_comment_various_matters"{
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
+    + :年度
+    + :学習における特徴等・行動の特徴、特技等
+    + :部活動・ボランティア活動等・取得資格、特技等
+    + :その他
+}
+
+@enduml

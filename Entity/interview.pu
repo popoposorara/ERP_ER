@@ -7,10 +7,10 @@ entity "interview"{
     + interview_target_type:対応相手の種別
     + comment:内容
     + claim:内容{相談・要望}
-    + student_id:該当生徒ID -> student.student_id
-    + branch_id:学校ID -> branch.branch_id
-    + interview_type_id:対応内容ID -> interview_type.interview_type_id
-    + staff_id:担当者ID -> staff.staff_id
+    + student_id:該当生徒ID -> student_id
+    + branch_id:学校ID -> branch_id
+    + interview_type_id:対応内容ID -> interview_type_id
+    + staff_id:担当者ID -> staff_id
 }
 
 @enduml

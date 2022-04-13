@@ -1,0 +1,10 @@
+@startuml
+
+entity "student_record_comment_attend"{
+    + student_record_comment_attend_id:出校の記録ID
+    + :年度
+    + :出校記録
+    + :備考
+}
+
+@enduml

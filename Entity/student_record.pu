@@ -1,0 +1,16 @@
+@startuml
+
+entity "student_record"{
+    + student_record_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + record_type:記録区分
+    + term_type:項目区分
+    + year:年度
+    + comment_id:内容ID -> student_record_comment_id
+    + created_at:登録日時
+    + created_by:登録者 -> staff_id
+    + updated_at:更新日時
+    + updated_by:更新者-> staff_id
+}
+
+@enduml

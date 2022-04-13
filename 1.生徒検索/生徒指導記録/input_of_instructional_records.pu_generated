@@ -1,0 +1,93 @@
+@startuml
+hide empty members
+
+!$branch="input_of_instructional_records" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "customer"{
+    + customer_id:顧客ID
+}
+
+entity "student_record"{
+    + student_record_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + record_type:記録区分
+    + term_type:項目区分
+    + year:年度
+    + comment_id:内容ID -> student_record_comment_id
+    + created_at:登録日時
+    + created_by:登録者 -> staff_id
+    + updated_at:更新日時
+    + updated_by:更新者-> staff_id
+}
+
+entity "student_record_comment"{
+    + student_record_comment_id:生徒指導記録コメントID
+    + student_record_comment_integrated_learning_time_id:総合的な学習の時間の記録ID -> student_record_comment_integrated_learning_time_id
+    + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
+    + student_record_comment_attend_id:出校の記録ID -> student_record_comment_attend_id
+}
+
+entity "student_record_comment_attend"{
+    + student_record_comment_attend_id:出校の記録ID
+    + :年度
+    + :出校記録
+    + :備考
+}
+
+entity "student_record_comment_integrated_learning_time"{
+    + student_record_comment_integrated_learning_time_id:総合的な学習の時間の記録ID
+    + :学習活動
+    + :評価
+}
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
+entity "student_record_comment_various_matters"{
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
+    + :年度
+    + :学習における特徴等・行動の特徴、特技等
+    + :部活動・ボランティア活動等・取得資格、特技等
+    + :その他
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attend
+student_record_comment ||--o| student_record_comment_integrated_learning_time
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record ||--|{ staff
+
+@enduml

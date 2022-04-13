@@ -1,0 +1,28 @@
+@startuml
+hide empty members
+
+!$branch="input_of_instructional_records" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+$include("branch.pu")
+$include("customer.pu")
+$include("student_record.pu")
+$include("student_record_comment.pu")
+$include("student_record_comment_attend.pu")
+$include("student_record_comment_integrated_learning_time.pu")
+$include("student_record_comment_special_activities.pu")
+$include("student_record_comment_various_matters.pu")
+$include("staff.pu")
+$include("student.pu")
+
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attend
+student_record_comment ||--o| student_record_comment_integrated_learning_time
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record ||--|{ staff
+
+@enduml
