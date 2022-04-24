@@ -59,6 +59,7 @@ entity "student_record_comment_attendance"{
     + :事故欠（届）  
     + :事故欠（無）
     + :出席日数
+    + branch_id:学校ID -> branch_id
 }
 
 entity "student_record_comment_integrated_learning_time_activity"{
