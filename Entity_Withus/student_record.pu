@@ -1,0 +1,16 @@
+@startuml
+
+entity "student_record"{
+    + student_record_id:生徒指導要録ID
+    + student_id:生徒ID
+    + record_type:記録区分 → 1:生徒指導要録 2:調査書<進学用> 3:調査書<就職用>
+    + term_type:項目区分　→ record_type 1の場合 1:学習活動 2:評価 3:特別活動 4:総合所見 5:出校、 record_type 2の場合 1:出欠 2:特別活動 3:諸事項1 4:諸事項2 5:諸事項3 6:総合 的な学習 活動 7:総合的な学習 評価 8:備 考、record_type 3の場合 1:特別活動 2: 欠席理由 3:身体備考 4:長所推薦事由
+    + year: 年度 → 年度が必要ない項目はnull
+    + comment:内容
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml
