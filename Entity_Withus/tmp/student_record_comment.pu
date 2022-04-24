@@ -1,0 +1,14 @@
+@startuml
+
+entity "student_record_comment"{
+    + student_record_comment_id:生徒指導記録コメントID
+    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID -> student_record_comment_integrated_learning_time_activity_id
+    + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
+    + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
+    + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
+    + comment: 備考
+}
+
+@enduml
