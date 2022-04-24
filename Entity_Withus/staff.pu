@@ -1,0 +1,58 @@
+@startuml
+
+entity "staff"{
+    + staff_id:社員ID
+    + user_id:ユーザID
+    + code:社員番号
+    + branch_id:所属校舎ID
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + staff_type:役割 → 10:社員 20:講師 30:スクールスタッフ
+    + pre_staff_type:応募区分
+    + teachable:授業可能フラグ
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + sex:性別
+    + birthday:生年月日
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + comment:備考
+    + junior_high_school_id:中学校
+    + high_school_id:高校
+    + university_id:大学
+    + grad_school_id:大学院
+    + apply_grade:応募学年
+    + recruit_reporting_method:連絡手法
+    + station_name:最寄駅
+    + railway_id:鉄道ID
+    + route_id:路線ID
+    + careers_date:採用日付
+    + correct_teacher_no:添削講師番号
+    + resume_no:履歴書管理番号
+    + health_check_receipt:健康診断受取有無
+    + paper_pass:書類合格有無
+    + mvcl_status:適性検査<MVCL>実施状況
+    + leaved:退職
+    + leave_date:退職日
+    + interview_rating:面接評価
+    + company_output:COMPANY連携出力
+    + regist_changed_at:登録票更新日
+    + main_subject_code:メイン科目コード
+    + deleted:削除フラグ
+    + stamp_id:印影ID
+    + simple_stamp_id:認印ID
+    + use_adjust_date:利用調整日
+    + created_at:登録日時 → current_timestamp
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml

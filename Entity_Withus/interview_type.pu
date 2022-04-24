@@ -1,0 +1,14 @@
+@startuml
+
+entity "interview_type"{
+    + interview_type_id:面談区分ID
+    + name:面談区分名称
+    + sort:並び順
+    + deleted:削除フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml
