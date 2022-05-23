@@ -1,0 +1,52 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "LMS認証情報" as lms_certification_information {
+
+entity "customer"{
+    + customer_id:顧客ID
+}
+
+entity "school"{
+    + school_id:学校ID
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+}
+
+entity "student_staff_history"{
+    + student_staff_history_id:生徒スタップ履歴ID
+}
+
+
+}
+
+student_info ||--|| student
+
+@enduml
