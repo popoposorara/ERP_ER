@@ -1,0 +1,21 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "ファイル一覧" as file_list {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_file.pu")
+$include("file_storage.pu")
+
+}
+
+student_file }|--|| student
+student_file ||--|| file_storage
+
+@enduml
