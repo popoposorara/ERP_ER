@@ -2,6 +2,11 @@
 
 entity "student_school_history"{
     + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
 }
 
 @enduml

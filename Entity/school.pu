@@ -2,6 +2,7 @@
 
 entity "school"{
     + school_id:学校ID
+    + name:学校名
 }
 
 @enduml

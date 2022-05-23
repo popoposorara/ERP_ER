@@ -1,0 +1,21 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "前籍校履歴" as create_previous_school_history {
+
+$include("customer.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_school_history.pu")
+
+}
+
+student_school_history }|--|| customer
+student_school_history ||--|| school
+
+@enduml
