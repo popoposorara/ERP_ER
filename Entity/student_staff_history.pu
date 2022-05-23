@@ -1,0 +1,7 @@
+@startuml
+
+entity "student_staff_history"{
+    + student_staff_history_id:生徒スタッフ履歴ID
+}
+
+@enduml

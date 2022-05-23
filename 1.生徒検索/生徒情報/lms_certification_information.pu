@@ -1,0 +1,22 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "LMS認証情報" as lms_certification_information {
+
+$include("customer.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_school_history.pu")
+$include("student_info.pu")
+$include("student_staff_history.pu")
+
+}
+
+student_info ||--|| student
+
+@enduml

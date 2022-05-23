@@ -1,0 +1,7 @@
+@startuml
+
+entity "school"{
+    + school_id:学校ID
+}
+
+@enduml
