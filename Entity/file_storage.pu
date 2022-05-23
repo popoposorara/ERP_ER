@@ -1,0 +1,9 @@
+@startuml
+
+entity "file_storage"{
+    + file_storage_id:ファイルストレージID
+    + file_name:ファイル名
+    + size:ファイルのサイズ
+    + path:ファイルパス
+}
+@enduml
