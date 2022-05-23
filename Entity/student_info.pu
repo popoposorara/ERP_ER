@@ -1,0 +1,11 @@
+@startuml
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+}
+
+@enduml
