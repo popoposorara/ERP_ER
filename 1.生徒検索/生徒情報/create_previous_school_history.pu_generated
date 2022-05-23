@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "LMS認証情報" as lms_certification_information {
+package "前籍校履歴" as create_previous_school_history {
 
 entity "customer"{
     + customer_id:顧客ID
@@ -38,21 +38,10 @@ entity "student_school_history"{
     + rest_month:休学月数
 }
 
-entity "student_info"{
-    + student_info_id:生徒情報ID
-    + student_id:生徒ID -> student_id
-    + 区分
-    + パスワード
-    + 更新日時
-}
-
-entity "student_staff_history"{
-    + student_staff_history_id:生徒スタッフ履歴ID
-}
-
 
 }
 
-student_info ||--|| student
+student_school_history }|--|| customer
+student_school_history ||--|| school
 
 @enduml
