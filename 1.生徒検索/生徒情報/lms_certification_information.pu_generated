@@ -41,7 +41,7 @@ entity "student_info"{
 }
 
 entity "student_staff_history"{
-    + student_staff_history_id:生徒スタップ履歴ID
+    + student_staff_history_id:生徒スタッフ履歴ID
 }
 
 
