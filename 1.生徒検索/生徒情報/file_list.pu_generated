@@ -28,7 +28,7 @@ entity "student_file"{
     + student_file_id:生徒ファイルID
     + student_id:生徒ID -> student_id
     + file_type:ファイル区分
-    + file_storage_id:ファイルストレージID -> file_storage
+    + file_storage_id:ファイルストレージID -> file_storage_id
     + updated_at:更新日時
     + updated_by:更新者
 }
