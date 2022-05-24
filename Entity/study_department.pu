@@ -1,0 +1,8 @@
+@startuml
+
+entity "study_department"{
+    + study_department_id:生徒課程学科ID
+    + short_name:課程学科
+}
+
+@enduml

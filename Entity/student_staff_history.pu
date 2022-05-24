@@ -2,6 +2,10 @@
 
 entity "student_staff_history"{
     + student_staff_history_id:生徒スタッフ履歴ID
+    + start_date:開始期間
+    + end_date:終了期間
+    + staff_id:担任ID  -> staff_id
+
 }
 
 @enduml

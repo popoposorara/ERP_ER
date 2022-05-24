@@ -1,0 +1,35 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "生徒情報" as student_information {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_info.pu")
+$include("branch.pu")
+$include("course.pu")
+$include("curriculum.pu")
+$include("school.pu")
+$include("staff.pu")	
+$include("study_department.pu")
+$include("study_course.pu")
+$include("student_staff_history.pu")
+$include("student_school_history.pu")
+
+}
+
+student_info ||--|| student
+student_info ||--|{ branch
+student_info ||--|{ staff
+student_info ||--|{ school
+student_info ||--|| study_department
+student_info ||--|| study_course
+student_info ||--|| curriculum
+student_school_history ||--|| school
+student_staff_history ||--|| staff
+@enduml

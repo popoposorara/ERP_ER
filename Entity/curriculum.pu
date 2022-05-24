@@ -1,0 +1,8 @@
+@startuml
+
+entity "curriculum"{
+    + curriculum_id:カリキュラムID
+    + short_name:教育課程
+}
+
+@enduml
