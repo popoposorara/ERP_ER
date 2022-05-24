@@ -15,6 +15,32 @@ entity "branch" {
 
 entity "customer"{
     + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
 }
 
 entity "interview_type"{
@@ -45,6 +71,7 @@ entity "student"{
     + student_id:生徒ID
     + student_no:学籍番号
     + entry_no:志願者番号
+    + belong_type:所属区分
     + [生徒番号]
     + [学籍番号]
     + [所属校]

@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "LMS認証情報" as lms_certification_information {
+package "生徒検索" as student_search {
 
 entity "customer"{
     + customer_id:顧客ID
@@ -38,6 +38,30 @@ entity "customer"{
     + fix_flg:確定
 }
 
+entity "parent" {
+    + parent_id:保護者ID
+    + user_id:該当ユーザID
+    + kname1:保護者氏名<姓>
+    + kname2:保護者氏名<名>
+    + fname1:保護者氏名カナ<姓>
+    + fname2:保護者氏名カナ<名>
+    + relation
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + employment:勤務先
+    + employment_tel:勤務先電話番号
+    + comment:備考
+    + maintenance_flg
+}
+
 entity "school"{
     + school_id:学校ID
     + name:学校名
@@ -56,15 +80,6 @@ entity "student"{
     + [担任]
     + [主コース]
     + [生徒区分] 
-}
-
-entity "student_school_history"{
-    + student_school_history_id:生徒学校履歴ID
-    + customer_id:顧客ID -> customer_id
-    + school_id:前籍校ID -> school_id
-    + start_date:開始日
-    + end_date:終了日
-    + rest_month:休学月数
 }
 
 entity "student_info"{
@@ -132,16 +147,20 @@ entity "student_info"{
     + regist_credit_num:仮履修登録単位		
 }
 
-entity "student_staff_history"{
-    + student_staff_history_id:生徒スタッフ履歴ID
-    + start_date:開始期間
-    + end_date:終了期間
-    + staff_id:担任ID  -> staff_id
+entity "zip_code" {
+    + zip_code_id:郵便番号ID
+}
+
+entity "prefecture" {
+    + prefecture_id:学校ID
 }
 
 
 }
 
+customer ||--|| prefecture
+customer ||--|{ school
+customer ||--|| parent
+parent ||--|| prefecture
 student_info ||--|| student
-
 @enduml
