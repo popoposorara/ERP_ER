@@ -1,0 +1,8 @@
+@startuml
+
+entity "study_course"{
+    + study_course_id:生徒コースID
+    + short_name:コース
+}
+
+@enduml
