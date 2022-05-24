@@ -1,0 +1,19 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+package "身体状況" as physical_condition {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_medical_checkup.pu")
+
+}
+
+student_medical_checkup ||--|| student
+
+@enduml

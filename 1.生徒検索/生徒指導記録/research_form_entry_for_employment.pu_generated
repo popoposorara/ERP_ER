@@ -117,13 +117,51 @@ entity "student_record_comment_attendance"{
 }
 
 entity "student_medical_checkup"{
-    + student_medical_checkup_id:身体状況ID
-    + height:身長
-    + weight:体重
-    + right_eyesight_char:視力(右)
-    + left_eyesight_char:視力(左)
-    + right_hearing:聴力(右)
-    + left_hearing:聴力(左)
+    + student_medical_checkup_id:生徒健康診断ID
+    + student_id:該当生徒ID -> student_id
+    + date:健康診断実施日
+    + height:身長（cm）
+    + weight:体重（kg）
+    + seating_height:座高（cm）
+    + right_eyesight:視力 数字 右 裸眼
+    + right_corrected_eyesight:視力 数字 右 矯正
+    + left_eyesight:視力 数字 左 裸眼
+    + left_corrected_eyesight:視力 数字 左 矯正
+    + right_eyesight_char:視力 文字 右 裸眼
+    + right_corrected_eyesight_char:視力 文字 右 矯正
+    + left_eyesight_char:視力 文字 左 裸眼
+    + left_corrected_eyesight_char:視力 文字 左 矯正
+    + right_hearing:聴力 右 db
+    + right_hearing_status:聴力 右 状態
+    + left_hearing:聴力 左 db
+    + left_hearing_status:聴力 左 状態
+    + urine_albuminoid1:尿 １次  蛋白
+    + urine_sugar1:尿 １次  糖
+    + urine_occult_blood1:尿 １次  潜血
+    + urine_albuminoid2:尿 ２次  蛋白
+    + urine_sugar2:尿 ２次  糖
+    + urine_occult_blood2:尿 ２次  潜血
+    + urine_comment:尿 その他の検査
+    + nutrient_status:栄養状態
+    + backbone_thoracis:脊柱・胸郭
+    + eye_disorder:目の疾病及び異常
+    + ear_nose_disorder:耳鼻咽頭疾患
+    + skin_disorder:皮膚疾患
+    + heart_clinical_exam:心臓 臨床医学的検査
+    + heart_disorder:心臓 疾病及び異常
+    + heart_comment:心臓 臨床医学的検査テキスト
+    + tuberculosis_date:結核 間接撮影 撮影日付
+    + tuberculosis_film_no:結核 間接撮影 フィルム番号
+    + tuberculosis_opinion:結核 間接撮影 所見
+    + tuberculosis_other_exam:結核 その他検査
+    + tuberculosis_disease:結核 その他検査 病名
+    + tuberculosis_level:結核 その他検査 指導区分
+    + anemia_comment:貧血 所見
+    + anemia_hemoglobin:貧血 所見 ヘモグロビン値
+    + other_disorder:その他疾病及び異常
+    + school_physician_comment:学校医 所見
+    + school_physician_date:学校医 所見 日付
+    + post_management:事後処置
     + comment:備考
 }
 
