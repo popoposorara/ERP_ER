@@ -1,0 +1,7 @@
+@startuml
+
+entity "prefecture" {
+    + prefecture_id:学校ID
+}
+
+@enduml

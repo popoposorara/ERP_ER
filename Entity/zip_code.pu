@@ -1,0 +1,7 @@
+@startuml
+
+entity "zip_code" {
+    + zip_code_id:郵便番号ID
+}
+
+@enduml

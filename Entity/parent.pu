@@ -1,0 +1,27 @@
+@startuml
+
+entity "parent" {
+    + parent_id:保護者ID
+    + user_id:該当ユーザID
+    + kname1:保護者氏名<姓>
+    + kname2:保護者氏名<名>
+    + fname1:保護者氏名カナ<姓>
+    + fname2:保護者氏名カナ<名>
+    + relation
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + employment:勤務先
+    + employment_tel:勤務先電話番号
+    + comment:備考
+    + maintenance_flg
+}
+
+@enduml
