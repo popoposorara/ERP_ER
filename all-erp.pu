@@ -1,0 +1,227 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "指導要録入力" as input_of_instructional_records {
+
+$include("branch.pu")
+$include("customer.pu")
+$include("student_record.pu")
+$include("student_record_comment.pu")
+$include("student_record_comment_attendance.pu")
+$include("student_record_comment_integrated_learning_time_activity.pu")
+$include("student_record_comment_special_activities.pu")
+$include("student_record_comment_various_matters.pu")
+$include("staff.pu")
+$include("student.pu")
+
+}
+
+namespace "調査書入力（就職用）" as research_form_entry_for_employment {
+
+$include("branch.pu")
+$include("customer.pu")
+$include("student_record.pu")
+$include("student_record_comment.pu")
+$include("staff.pu")
+$include("student.pu")
+
+$include("student_record_comment_special_activities.pu")
+$include("student_record_comment_attendance.pu")
+$include("student_medical_checkup.pu")
+$include("student_strengths.pu")
+
+}
+
+namespace "調査書入力（進学用）" as research_form_entry_for_further_education {
+
+$include("branch.pu")
+$include("customer.pu")
+$include("student_record.pu")
+$include("student_record_comment.pu")
+$include("staff.pu")
+$include("student.pu")
+
+$include("student_record_comment_attendance.pu")
+$include("student_record_comment_special_activities.pu")
+$include("student_record_comment_various_matters.pu")
+$include("student_record_comment_integrated_learning_time_content.pu")
+
+}
+
+namespace "生徒指導記録" as student_guidance_record {
+
+$include("branch.pu")
+$include("customer.pu")
+$include("interview_type.pu")
+$include("interview.pu")
+$include("staff.pu")
+$include("student.pu")
+
+}
+
+
+namespace "前籍校履歴" as create_previous_school_history {
+
+$include("customer.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_school_history.pu")
+
+}
+
+namespace "顧客情報" as customer_information {
+
+$include("customer.pu")
+$include("parent.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_info.pu")
+$include("zip_code.pu")
+$include("prefecture.pu")
+
+}
+
+namespace "ファイル一覧" as file_list {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_file.pu")
+$include("file_storage.pu")
+
+}
+
+namespace "LMS認証情報" as lms_certification_information {
+
+$include("customer.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_school_history.pu")
+$include("student_info.pu")
+$include("student_staff_history.pu")
+
+}
+
+namespace "身体状況" as physical_condition {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_medical_checkup.pu")
+
+}
+
+namespace "生徒情報" as student_information {
+
+$include("customer.pu")
+$include("student.pu")
+$include("student_info.pu")
+$include("branch.pu")
+$include("course.pu")
+$include("curriculum.pu")
+$include("school.pu")
+$include("staff.pu")	
+$include("study_department.pu")
+$include("study_course.pu")
+$include("student_staff_history.pu")
+$include("student_school_history.pu")
+
+}
+
+namespace "生徒検索" as student_search {
+
+$include("customer.pu")
+$include("parent.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_info.pu")
+$include("zip_code.pu")
+$include("prefecture.pu")
+
+}
+
+' namespace "指導要録入力" as input_of_instructional_records
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o| student_record_comment_integrated_learning_time_activity
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record ||--|{ staff
+
+' namespace "調査書入力（就職用）" as research_form_entry_for_employment
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o| student_medical_checkup
+student_record_comment ||--o| student_strengths
+student_record_comment_attendance ||--|| branch
+student_record ||--|{ staff
+
+
+' namespace "調査書入力（進学用）" as research_form_entry_for_further_education
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record_comment ||--o| student_record_comment_integrated_learning_time_content
+student_record ||--|{ staff
+
+' namespace "生徒指導記録" as student_guidance_record 
+interview ||--|| student
+interview ||--|| branch
+interview ||--|| interview_type
+interview ||--|| staff
+
+' namespace "前籍校履歴" as create_previous_school_history
+student_school_history }|--|| customer
+student_school_history ||--|| school
+
+' namespace "顧客情報" as customer_information 
+customer ||--|| prefecture
+customer ||--|{ school
+customer ||--|| parent
+parent ||--|| prefecture
+student_info ||--|| student
+
+' namespace "ファイル一覧" as file_list
+student_file }|--|| student
+student_file ||--|| file_storage
+
+' namespace "LMS認証情報" as lms_certification_information
+$include("customer.pu")
+$include("school.pu")
+$include("student.pu")
+$include("student_school_history.pu")
+$include("student_info.pu")
+$include("student_staff_history.pu")
+
+
+' namespace "身体状況" as physical_condition
+student_medical_checkup ||--|| student
+
+' namespace "生徒情報" as student_information
+student_info ||--|| student
+student_info ||--|{ branch
+student_info ||--|{ staff
+student_info ||--|{ school
+student_info ||--|| study_department
+student_info ||--|| study_course
+student_info ||--|| curriculum
+student_school_history ||--|| school
+student_staff_history ||--|| staff
+
+' namespace "生徒検索" as student_search
+customer ||--|| prefecture
+customer ||--|{ school
+customer ||--|| parent
+parent ||--|| prefecture
+student_info ||--|| student
+
+@enduml
+

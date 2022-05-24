@@ -1,0 +1,1551 @@
+@startuml
+hide empty members
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "指導要録入力" as input_of_instructional_records {
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student_record"{
+    + student_record_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + record_type:記録区分
+    + term_type:項目区分
+    + year:年度
+    + comment_id:内容ID -> student_record_comment_id
+    + created_at:登録日時
+    + created_by:登録者 -> staff_id
+    + updated_at:更新日時
+    + updated_by:更新者-> staff_id
+}
+
+entity "student_record_comment"{
+    + student_record_comment_id:生徒指導記録コメントID
+    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID -> student_record_comment_integrated_learning_time_activity_id
+    + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
+    + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
+    + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
+    + comment: 備考
+}
+
+entity "student_record_comment_attendance"{
+    + student_record_comment_attendance_id:出席ID
+    + :年度
+    + :欠席日数
+    + :欠席の主な内容
+    + :出校記録
+    + :備考
+    + :内容
+    + :授業日数
+    + :休学日数
+    + :出席停止日数
+    + :忌引き日数
+    + :留学授業日数
+    + :出席しなければならない日数
+    + :病欠日数
+    + :事故欠（届）  
+    + :事故欠（無）
+    + :出席日数
+    + branch_id:学校ID -> branch_id
+}
+
+entity "student_record_comment_integrated_learning_time_activity"{
+    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
+    + :学習活動
+    + :評価
+}
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
+entity "student_record_comment_various_matters"{
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
+    + :年度
+    + :学習における特徴等・行動の特徴、特技等
+    + :部活動・ボランティア活動等・取得資格、特技等
+    + :その他
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+}
+
+namespace "調査書入力（就職用）" as research_form_entry_for_employment {
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student_record"{
+    + student_record_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + record_type:記録区分
+    + term_type:項目区分
+    + year:年度
+    + comment_id:内容ID -> student_record_comment_id
+    + created_at:登録日時
+    + created_by:登録者 -> staff_id
+    + updated_at:更新日時
+    + updated_by:更新者-> staff_id
+}
+
+entity "student_record_comment"{
+    + student_record_comment_id:生徒指導記録コメントID
+    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID -> student_record_comment_integrated_learning_time_activity_id
+    + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
+    + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
+    + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
+    + comment: 備考
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
+entity "student_record_comment_attendance"{
+    + student_record_comment_attendance_id:出席ID
+    + :年度
+    + :欠席日数
+    + :欠席の主な内容
+    + :出校記録
+    + :備考
+    + :内容
+    + :授業日数
+    + :休学日数
+    + :出席停止日数
+    + :忌引き日数
+    + :留学授業日数
+    + :出席しなければならない日数
+    + :病欠日数
+    + :事故欠（届）  
+    + :事故欠（無）
+    + :出席日数
+    + branch_id:学校ID -> branch_id
+}
+
+entity "student_medical_checkup"{
+    + student_medical_checkup_id:生徒健康診断ID
+    + student_id:該当生徒ID -> student_id
+    + date:健康診断実施日
+    + height:身長（cm）
+    + weight:体重（kg）
+    + seating_height:座高（cm）
+    + right_eyesight:視力 数字 右 裸眼
+    + right_corrected_eyesight:視力 数字 右 矯正
+    + left_eyesight:視力 数字 左 裸眼
+    + left_corrected_eyesight:視力 数字 左 矯正
+    + right_eyesight_char:視力 文字 右 裸眼
+    + right_corrected_eyesight_char:視力 文字 右 矯正
+    + left_eyesight_char:視力 文字 左 裸眼
+    + left_corrected_eyesight_char:視力 文字 左 矯正
+    + right_hearing:聴力 右 db
+    + right_hearing_status:聴力 右 状態
+    + left_hearing:聴力 左 db
+    + left_hearing_status:聴力 左 状態
+    + urine_albuminoid1:尿 １次  蛋白
+    + urine_sugar1:尿 １次  糖
+    + urine_occult_blood1:尿 １次  潜血
+    + urine_albuminoid2:尿 ２次  蛋白
+    + urine_sugar2:尿 ２次  糖
+    + urine_occult_blood2:尿 ２次  潜血
+    + urine_comment:尿 その他の検査
+    + nutrient_status:栄養状態
+    + backbone_thoracis:脊柱・胸郭
+    + eye_disorder:目の疾病及び異常
+    + ear_nose_disorder:耳鼻咽頭疾患
+    + skin_disorder:皮膚疾患
+    + heart_clinical_exam:心臓 臨床医学的検査
+    + heart_disorder:心臓 疾病及び異常
+    + heart_comment:心臓 臨床医学的検査テキスト
+    + tuberculosis_date:結核 間接撮影 撮影日付
+    + tuberculosis_film_no:結核 間接撮影 フィルム番号
+    + tuberculosis_opinion:結核 間接撮影 所見
+    + tuberculosis_other_exam:結核 その他検査
+    + tuberculosis_disease:結核 その他検査 病名
+    + tuberculosis_level:結核 その他検査 指導区分
+    + anemia_comment:貧血 所見
+    + anemia_hemoglobin:貧血 所見 ヘモグロビン値
+    + other_disorder:その他疾病及び異常
+    + school_physician_comment:学校医 所見
+    + school_physician_date:学校医 所見 日付
+    + post_management:事後処置
+    + comment:備考
+}
+
+entity "student_strengths"{
+    + student_strengths_id:本人の長所・推薦事由等ID
+    + comment:内容
+}
+
+
+}
+
+namespace "調査書入力（進学用）" as research_form_entry_for_further_education {
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student_record"{
+    + student_record_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + record_type:記録区分
+    + term_type:項目区分
+    + year:年度
+    + comment_id:内容ID -> student_record_comment_id
+    + created_at:登録日時
+    + created_by:登録者 -> staff_id
+    + updated_at:更新日時
+    + updated_by:更新者-> staff_id
+}
+
+entity "student_record_comment"{
+    + student_record_comment_id:生徒指導記録コメントID
+    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID -> student_record_comment_integrated_learning_time_activity_id
+    + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
+    + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
+    + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
+    + comment: 備考
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+entity "student_record_comment_attendance"{
+    + student_record_comment_attendance_id:出席ID
+    + :年度
+    + :欠席日数
+    + :欠席の主な内容
+    + :出校記録
+    + :備考
+    + :内容
+    + :授業日数
+    + :休学日数
+    + :出席停止日数
+    + :忌引き日数
+    + :留学授業日数
+    + :出席しなければならない日数
+    + :病欠日数
+    + :事故欠（届）  
+    + :事故欠（無）
+    + :出席日数
+    + branch_id:学校ID -> branch_id
+}
+
+entity "student_record_comment_special_activities"{
+    + student_record_comment_special_activities_id:特別活動の記録ID
+    + :年度
+    + :内容
+}
+
+entity "student_record_comment_various_matters"{
+    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
+    + :年度
+    + :学習における特徴等・行動の特徴、特技等
+    + :部活動・ボランティア活動等・取得資格、特技等
+    + :その他
+}
+
+entity "student_record_comment_integrated_learning_time_content"{
+    + student_record_comment_integrated_learning_time_content_id:総合的な学習の時間の内容・評価ID
+    + :学習活動
+    + :評価
+}
+
+
+}
+
+namespace "生徒指導記録" as student_guidance_record {
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "interview_type"{
+    + interview_type_id:対応方法ID
+    + name:対応内容
+}
+
+entity "interview"{
+    + interview_id:生徒指導記録ID
+    + interview_date:日付と開始時刻
+    + interview_way:対応方法
+    + interview_target_type:対応相手の種別
+    + comment:内容
+    + claim:内容{相談・要望}
+    + student_id:該当生徒ID -> student_id
+    + branch_id:学校ID -> branch_id
+    + interview_type_id:対応内容ID -> interview_type_id
+    + staff_id:担当者ID -> staff_id
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+
+}
+
+
+namespace "前籍校履歴" as create_previous_school_history {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
+}
+
+
+}
+
+namespace "顧客情報" as customer_information {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "parent" {
+    + parent_id:保護者ID
+    + user_id:該当ユーザID
+    + kname1:保護者氏名<姓>
+    + kname2:保護者氏名<名>
+    + fname1:保護者氏名カナ<姓>
+    + fname2:保護者氏名カナ<名>
+    + relation
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + employment:勤務先
+    + employment_tel:勤務先電話番号
+    + comment:備考
+    + maintenance_flg
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+    + branch_id:所属校ID  -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>  
+    + fname2:フリガナ<名>  
+    + dm_sendable:DM送信可・不可  
+    + nationality:国籍  
+    + sex:性別  
+    + grade:学年
+    + birthday:生年月日    
+    + school_staff_id:高校担任ID  -> staff_id
+    + campus_staff_id:キャンパス担当ID  -> staff_id
+    + zip_cd:郵便番号 
+    + pref_id:都道府県ID  
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号 
+    + fax:FAX番号
+    + email:メールアドレス    
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度  
+    + first_entrance_year:高校入学年度  
+    + entry_date:出願日  
+    + course_type:高校生区分    
+    + entrance_grade:入学学年 
+    + entrance_date:入学日    
+    + graduate_date:卒業日    
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分  
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日  
+    + regist_credit_num:履修登録単位数    
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考  
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分  
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード    
+    + old_school_code:旧通信制高校コード    
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書    
+    + working_years:勤務年数  
+    + working_dates:勤務日数  
+    + employment:勤務先  
+    + exam_plan_year:受験予定年
+    + created_at:登録日時 
+    + created_by:登録者  
+    + updated_at:更新日時 
+    + updated_by:更新者  
+    + regist_credit_num:仮履修登録単位		
+}
+
+entity "zip_code" {
+    + zip_code_id:郵便番号ID
+}
+
+entity "prefecture" {
+    + prefecture_id:学校ID
+}
+
+
+}
+
+namespace "ファイル一覧" as file_list {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_file"{
+    + student_file_id:生徒ファイルID
+    + student_id:生徒ID -> student_id
+    + file_type:ファイル区分
+    + file_storage_id:ファイルストレージID -> file_storage_id
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+entity "file_storage"{
+    + file_storage_id:ファイルストレージID
+    + file_name:ファイル名
+    + size:ファイルのサイズ
+    + path:ファイルパス
+}
+
+
+}
+
+namespace "LMS認証情報" as lms_certification_information {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+    + branch_id:所属校ID  -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>  
+    + fname2:フリガナ<名>  
+    + dm_sendable:DM送信可・不可  
+    + nationality:国籍  
+    + sex:性別  
+    + grade:学年
+    + birthday:生年月日    
+    + school_staff_id:高校担任ID  -> staff_id
+    + campus_staff_id:キャンパス担当ID  -> staff_id
+    + zip_cd:郵便番号 
+    + pref_id:都道府県ID  
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号 
+    + fax:FAX番号
+    + email:メールアドレス    
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度  
+    + first_entrance_year:高校入学年度  
+    + entry_date:出願日  
+    + course_type:高校生区分    
+    + entrance_grade:入学学年 
+    + entrance_date:入学日    
+    + graduate_date:卒業日    
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分  
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日  
+    + regist_credit_num:履修登録単位数    
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考  
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分  
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード    
+    + old_school_code:旧通信制高校コード    
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書    
+    + working_years:勤務年数  
+    + working_dates:勤務日数  
+    + employment:勤務先  
+    + exam_plan_year:受験予定年
+    + created_at:登録日時 
+    + created_by:登録者  
+    + updated_at:更新日時 
+    + updated_by:更新者  
+    + regist_credit_num:仮履修登録単位		
+}
+
+entity "student_staff_history"{
+    + student_staff_history_id:生徒スタッフ履歴ID
+    + start_date:開始期間
+    + end_date:終了期間
+    + staff_id:担任ID  -> staff_id
+}
+
+
+}
+
+namespace "身体状況" as physical_condition {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_medical_checkup"{
+    + student_medical_checkup_id:生徒健康診断ID
+    + student_id:該当生徒ID -> student_id
+    + date:健康診断実施日
+    + height:身長（cm）
+    + weight:体重（kg）
+    + seating_height:座高（cm）
+    + right_eyesight:視力 数字 右 裸眼
+    + right_corrected_eyesight:視力 数字 右 矯正
+    + left_eyesight:視力 数字 左 裸眼
+    + left_corrected_eyesight:視力 数字 左 矯正
+    + right_eyesight_char:視力 文字 右 裸眼
+    + right_corrected_eyesight_char:視力 文字 右 矯正
+    + left_eyesight_char:視力 文字 左 裸眼
+    + left_corrected_eyesight_char:視力 文字 左 矯正
+    + right_hearing:聴力 右 db
+    + right_hearing_status:聴力 右 状態
+    + left_hearing:聴力 左 db
+    + left_hearing_status:聴力 左 状態
+    + urine_albuminoid1:尿 １次  蛋白
+    + urine_sugar1:尿 １次  糖
+    + urine_occult_blood1:尿 １次  潜血
+    + urine_albuminoid2:尿 ２次  蛋白
+    + urine_sugar2:尿 ２次  糖
+    + urine_occult_blood2:尿 ２次  潜血
+    + urine_comment:尿 その他の検査
+    + nutrient_status:栄養状態
+    + backbone_thoracis:脊柱・胸郭
+    + eye_disorder:目の疾病及び異常
+    + ear_nose_disorder:耳鼻咽頭疾患
+    + skin_disorder:皮膚疾患
+    + heart_clinical_exam:心臓 臨床医学的検査
+    + heart_disorder:心臓 疾病及び異常
+    + heart_comment:心臓 臨床医学的検査テキスト
+    + tuberculosis_date:結核 間接撮影 撮影日付
+    + tuberculosis_film_no:結核 間接撮影 フィルム番号
+    + tuberculosis_opinion:結核 間接撮影 所見
+    + tuberculosis_other_exam:結核 その他検査
+    + tuberculosis_disease:結核 その他検査 病名
+    + tuberculosis_level:結核 その他検査 指導区分
+    + anemia_comment:貧血 所見
+    + anemia_hemoglobin:貧血 所見 ヘモグロビン値
+    + other_disorder:その他疾病及び異常
+    + school_physician_comment:学校医 所見
+    + school_physician_date:学校医 所見 日付
+    + post_management:事後処置
+    + comment:備考
+}
+
+
+}
+
+namespace "生徒情報" as student_information {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+    + branch_id:所属校ID  -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>  
+    + fname2:フリガナ<名>  
+    + dm_sendable:DM送信可・不可  
+    + nationality:国籍  
+    + sex:性別  
+    + grade:学年
+    + birthday:生年月日    
+    + school_staff_id:高校担任ID  -> staff_id
+    + campus_staff_id:キャンパス担当ID  -> staff_id
+    + zip_cd:郵便番号 
+    + pref_id:都道府県ID  
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号 
+    + fax:FAX番号
+    + email:メールアドレス    
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度  
+    + first_entrance_year:高校入学年度  
+    + entry_date:出願日  
+    + course_type:高校生区分    
+    + entrance_grade:入学学年 
+    + entrance_date:入学日    
+    + graduate_date:卒業日    
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分  
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日  
+    + regist_credit_num:履修登録単位数    
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考  
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分  
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード    
+    + old_school_code:旧通信制高校コード    
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書    
+    + working_years:勤務年数  
+    + working_dates:勤務日数  
+    + employment:勤務先  
+    + exam_plan_year:受験予定年
+    + created_at:登録日時 
+    + created_by:登録者  
+    + updated_at:更新日時 
+    + updated_by:更新者  
+    + regist_credit_num:仮履修登録単位		
+}
+
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "course"{
+    + course_id:コースID
+    + short_name:主コース
+}
+
+entity "curriculum"{
+    + curriculum_id:カリキュラムID
+    + short_name:教育課程
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "study_department"{
+    + study_department_id:生徒課程学科ID
+    + short_name:課程学科
+}
+
+entity "study_course"{
+    + study_course_id:生徒コースID
+    + short_name:コース
+}
+
+entity "student_staff_history"{
+    + student_staff_history_id:生徒スタッフ履歴ID
+    + start_date:開始期間
+    + end_date:終了期間
+    + staff_id:担任ID  -> staff_id
+}
+
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
+}
+
+
+}
+
+namespace "生徒検索" as student_search {
+
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "parent" {
+    + parent_id:保護者ID
+    + user_id:該当ユーザID
+    + kname1:保護者氏名<姓>
+    + kname2:保護者氏名<名>
+    + fname1:保護者氏名カナ<姓>
+    + fname2:保護者氏名カナ<名>
+    + relation
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + employment:勤務先
+    + employment_tel:勤務先電話番号
+    + comment:備考
+    + maintenance_flg
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+    + branch_id:所属校ID  -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>  
+    + fname2:フリガナ<名>  
+    + dm_sendable:DM送信可・不可  
+    + nationality:国籍  
+    + sex:性別  
+    + grade:学年
+    + birthday:生年月日    
+    + school_staff_id:高校担任ID  -> staff_id
+    + campus_staff_id:キャンパス担当ID  -> staff_id
+    + zip_cd:郵便番号 
+    + pref_id:都道府県ID  
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号 
+    + fax:FAX番号
+    + email:メールアドレス    
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度  
+    + first_entrance_year:高校入学年度  
+    + entry_date:出願日  
+    + course_type:高校生区分    
+    + entrance_grade:入学学年 
+    + entrance_date:入学日    
+    + graduate_date:卒業日    
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分  
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日  
+    + regist_credit_num:履修登録単位数    
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考  
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分  
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード    
+    + old_school_code:旧通信制高校コード    
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書    
+    + working_years:勤務年数  
+    + working_dates:勤務日数  
+    + employment:勤務先  
+    + exam_plan_year:受験予定年
+    + created_at:登録日時 
+    + created_by:登録者  
+    + updated_at:更新日時 
+    + updated_by:更新者  
+    + regist_credit_num:仮履修登録単位		
+}
+
+entity "zip_code" {
+    + zip_code_id:郵便番号ID
+}
+
+entity "prefecture" {
+    + prefecture_id:学校ID
+}
+
+
+}
+
+' namespace "指導要録入力" as input_of_instructional_records
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o| student_record_comment_integrated_learning_time_activity
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record ||--|{ staff
+
+' namespace "調査書入力（就職用）" as research_form_entry_for_employment
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o| student_medical_checkup
+student_record_comment ||--o| student_strengths
+student_record_comment_attendance ||--|| branch
+student_record ||--|{ staff
+
+
+' namespace "調査書入力（進学用）" as research_form_entry_for_further_education
+student_record ||--|| student
+student_record ||--|| student_record_comment
+student_record_comment ||--o{ student_record_comment_attendance
+student_record_comment ||--o{ student_record_comment_special_activities
+student_record_comment ||--o{ student_record_comment_various_matters
+student_record_comment ||--o| student_record_comment_integrated_learning_time_content
+student_record ||--|{ staff
+
+' namespace "生徒指導記録" as student_guidance_record 
+interview ||--|| student
+interview ||--|| branch
+interview ||--|| interview_type
+interview ||--|| staff
+
+' namespace "前籍校履歴" as create_previous_school_history
+student_school_history }|--|| customer
+student_school_history ||--|| school
+
+' namespace "顧客情報" as customer_information 
+customer ||--|| prefecture
+customer ||--|{ school
+customer ||--|| parent
+parent ||--|| prefecture
+student_info ||--|| student
+
+' namespace "ファイル一覧" as file_list
+student_file }|--|| student
+student_file ||--|| file_storage
+
+' namespace "LMS認証情報" as lms_certification_information
+entity "customer"{
+    + customer_id:顧客ID
+    + parent_id:該当保護者ID -> parent_id
+    + kname1:生徒氏名<性>
+    + kname2:生徒氏名<名>
+    + fname1:生徒氏名カナ<性>
+    + fname2:生徒氏名カナ<名>
+    + dm_sendable:DM区分
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade
+    + birthday:生年月日
+    + zip_cd:住所<郵便番号>
+    + pref_id:住所<都道府県> -> prefecture_id
+    + address1:住所<市区町村>
+    + address2:住所<町・番地>
+    + address3:住所<ビル・マンション>
+    + email:PCアドレス
+    + portable_email:携帯アドレス
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_school_id:大学 -> school_id
+    + other_school_id -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "student"{
+    + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
+    + belong_type:所属区分
+    + [生徒番号]
+    + [学籍番号]
+    + [所属校]
+    + [生徒氏名カナ]
+    + [生徒氏名]
+    + [担任]
+    + [主コース]
+    + [生徒区分] 
+}
+
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
+}
+
+entity "student_info"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + 区分
+    + パスワード
+    + 更新日時
+    + branch_id:所属校ID  -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>  
+    + fname2:フリガナ<名>  
+    + dm_sendable:DM送信可・不可  
+    + nationality:国籍  
+    + sex:性別  
+    + grade:学年
+    + birthday:生年月日    
+    + school_staff_id:高校担任ID  -> staff_id
+    + campus_staff_id:キャンパス担当ID  -> staff_id
+    + zip_cd:郵便番号 
+    + pref_id:都道府県ID  
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号 
+    + fax:FAX番号
+    + email:メールアドレス    
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度  
+    + first_entrance_year:高校入学年度  
+    + entry_date:出願日  
+    + course_type:高校生区分    
+    + entrance_grade:入学学年 
+    + entrance_date:入学日    
+    + graduate_date:卒業日    
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分  
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日  
+    + regist_credit_num:履修登録単位数    
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考  
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分  
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード    
+    + old_school_code:旧通信制高校コード    
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書    
+    + working_years:勤務年数  
+    + working_dates:勤務日数  
+    + employment:勤務先  
+    + exam_plan_year:受験予定年
+    + created_at:登録日時 
+    + created_by:登録者  
+    + updated_at:更新日時 
+    + updated_by:更新者  
+    + regist_credit_num:仮履修登録単位		
+}
+
+entity "student_staff_history"{
+    + student_staff_history_id:生徒スタッフ履歴ID
+    + start_date:開始期間
+    + end_date:終了期間
+    + staff_id:担任ID  -> staff_id
+}
+
+
+
+' namespace "身体状況" as physical_condition
+student_medical_checkup ||--|| student
+
+' namespace "生徒情報" as student_information
+student_info ||--|| student
+student_info ||--|{ branch
+student_info ||--|{ staff
+student_info ||--|{ school
+student_info ||--|| study_department
+student_info ||--|| study_course
+student_info ||--|| curriculum
+student_school_history ||--|| school
+student_staff_history ||--|| staff
+
+' namespace "生徒検索" as student_search
+customer ||--|| prefecture
+customer ||--|{ school
+customer ||--|| parent
+parent ||--|| prefecture
+student_info ||--|| student
+
+@enduml
+
