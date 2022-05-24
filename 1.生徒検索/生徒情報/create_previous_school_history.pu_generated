@@ -19,6 +19,8 @@ entity "school"{
 
 entity "student"{
     + student_id:生徒ID
+    + student_no:学籍番号
+    + entry_no:志願者番号
     + [生徒番号]
     + [学籍番号]
     + [所属校]

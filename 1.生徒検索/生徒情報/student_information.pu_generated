@@ -6,15 +6,10 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "LMS認証情報" as lms_certification_information {
+package "生徒情報" as student_information {
 
 entity "customer"{
     + customer_id:顧客ID
-}
-
-entity "school"{
-    + school_id:学校ID
-    + name:学校名
 }
 
 entity "student"{
@@ -29,15 +24,6 @@ entity "student"{
     + [担任]
     + [主コース]
     + [生徒区分] 
-}
-
-entity "student_school_history"{
-    + student_school_history_id:生徒学校履歴ID
-    + customer_id:顧客ID -> customer_id
-    + school_id:前籍校ID -> school_id
-    + start_date:開始日
-    + end_date:終了日
-    + rest_month:休学月数
 }
 
 entity "student_info"{
@@ -105,6 +91,42 @@ entity "student_info"{
     + regist_credit_num:仮履修登録単位		
 }
 
+entity "branch" {
+    + branch_id:学校ID
+    + short_name:学校名
+}
+
+entity "course"{
+    + course_id:コースID
+    + short_name:主コース
+}
+
+entity "curriculum"{
+    + curriculum_id:カリキュラムID
+    + short_name:教育課程
+}
+
+entity "school"{
+    + school_id:学校ID
+    + name:学校名
+}
+
+entity "staff"{
+    + staff_id:スタッフID
+    + kname1:名前1
+    + kname2:名前2
+}
+
+entity "study_department"{
+    + study_department_id:生徒課程学科ID
+    + short_name:課程学科
+}
+
+entity "study_course"{
+    + study_course_id:生徒コースID
+    + short_name:コース
+}
+
 entity "student_staff_history"{
     + student_staff_history_id:生徒スタッフ履歴ID
     + start_date:開始期間
@@ -112,9 +134,25 @@ entity "student_staff_history"{
     + staff_id:担任ID  -> staff_id
 }
 
+entity "student_school_history"{
+    + student_school_history_id:生徒学校履歴ID
+    + customer_id:顧客ID -> customer_id
+    + school_id:前籍校ID -> school_id
+    + start_date:開始日
+    + end_date:終了日
+    + rest_month:休学月数
+}
+
 
 }
 
 student_info ||--|| student
-
+student_info ||--|{ branch
+student_info ||--|{ staff
+student_info ||--|{ school
+student_info ||--|| study_department
+student_info ||--|| study_course
+student_info ||--|| curriculum
+student_school_history ||--|| school
+student_staff_history ||--|| staff
 @enduml
