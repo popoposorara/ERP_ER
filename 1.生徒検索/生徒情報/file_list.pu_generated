@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "ファイル一覧" as file_list {
+namespace "ファイル一覧" as file_list {
 
 entity "customer"{
     + customer_id:顧客ID

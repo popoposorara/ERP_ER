@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "LMS認証情報" as lms_certification_information {
+namespace "LMS認証情報" as lms_certification_information {
 
 entity "customer"{
     + customer_id:顧客ID

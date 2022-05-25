@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "前籍校履歴" as create_previous_school_history {
+namespace "前籍校履歴" as create_previous_school_history {
 
 entity "customer"{
     + customer_id:顧客ID
