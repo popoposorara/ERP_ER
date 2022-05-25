@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "身体状況" as physical_condition {
+namespace "身体状況" as physical_condition {
 
 $include("customer.pu")
 $include("student.pu")

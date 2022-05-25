@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "顧客情報" as customer_information {
+namespace "顧客情報" as customer_information {
 
 entity "customer"{
     + customer_id:顧客ID

@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "調査書入力（進学用）" as research_form_entry_for_further_education {
+namespace "調査書入力（進学用）" as research_form_entry_for_further_education {
 
 $include("branch.pu")
 $include("customer.pu")

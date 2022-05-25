@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "指導要録入力" as input_of_instructional_records {
+namespace "指導要録入力" as input_of_instructional_records {
 
 entity "branch" {
     + branch_id:学校ID

@@ -6,7 +6,7 @@ hide empty members
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-package "生徒検索" as student_search {
+namespace "生徒検索" as student_search {
 
 $include("customer.pu")
 $include("parent.pu")
