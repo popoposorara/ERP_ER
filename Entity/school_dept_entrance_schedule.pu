@@ -1,0 +1,7 @@
+@startuml
+
+entity "school_dept_entrance_schedule" {
+    + school_dept_entrance_schedule_id:入試方式ID
+}
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+
+entity "business_category" {
+    + business_category_id:業種ID
+}
+
+@enduml
