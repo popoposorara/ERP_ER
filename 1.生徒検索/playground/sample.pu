@@ -1,0 +1,20 @@
+@startuml
+hide empty members
+!include ../../token/token.pu
+
+!$branch="main" 
+!procedure $include($source)
+  !include https://raw.githubusercontent.com/popoposorara/ERP_ER/$branch/Entity/$source?token=$tokenData[$source]
+!endprocedure
+
+
+namespace "進路管理" as career_management {
+
+$include("customer.pu")
+
+}
+
+branch ||--|| branch
+
+
+@endumlgit
