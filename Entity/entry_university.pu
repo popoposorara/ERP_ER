@@ -1,0 +1,17 @@
+@startuml
+
+entity "entry_university" {
+    + entry_university_id:受験大学ID
+    + student_id:該当生徒ID -> student_id
+    + dept_entrance_schedule_id:入試方式 -> school_dept_entrance_schedule_id
+    + rank:志望順位
+    + entry_number:受験番号
+    + entry_pass_type_id:結果 -> entry_pass_type_id
+    + pass_date:現在日時
+    + recommend_type:結果
+    + handbill_name:ﾁﾗｼ氏名掲載不可
+    + entrance:進学
+    + pass_result:合格実績
+}
+
+@enduml

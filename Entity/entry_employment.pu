@@ -1,0 +1,13 @@
+@startuml
+
+entity "entry_employment" {
+    + entry_employment_id:就職活動ID
+    + student_id:該当生徒ID -> student_id
+    + business_category_id:業種 -> business_category_id
+    + company_name:会社名
+    + rank:志望順位
+    + entry_pass_type_id:結果 -> entry_pass_type_id
+    + entrance:就職
+}
+
+@enduml

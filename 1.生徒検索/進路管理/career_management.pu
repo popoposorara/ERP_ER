@@ -1,0 +1,37 @@
+@startuml
+hide empty members
+
+!$branch="create-career_management" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "進路管理" as career_management {
+
+$include("branch.pu")
+$include("business_category.pu")
+$include("entry_employment.pu")
+$include("entry_pass_type.pu")
+$include("entry_university.pu")
+$include("school.pu")
+$include("school_dept.pu")
+$include("school_dept_course.pu")
+$include("school_dept_entrance_schedule.pu")
+$include("school_entrance_schedule_name.pu")
+$include("student.pu")
+$include("student_info.pu")
+
+}
+
+entry_employment ||--|| student
+entry_employment ||--|| business_category
+entry_employment ||--|| entry_pass_type
+
+entry_university ||--|| student
+entry_university ||--|| school_dept_entrance_schedule
+entry_university ||--|| entry_pass_type
+
+student_info ||--|| student
+student_info ||--|| branch
+
+@enduml

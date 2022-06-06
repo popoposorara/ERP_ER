@@ -1,0 +1,7 @@
+@startuml
+
+entity "school_entrance_schedule_name" {
+    + school_entrance_schedule_name_id:
+}
+
+@enduml

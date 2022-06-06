@@ -1,0 +1,7 @@
+@startuml
+
+entity "entry_pass_type" {
+    + entry_pass_type_id:結果ID
+}
+
+@enduml
