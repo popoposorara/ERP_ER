@@ -1,0 +1,8 @@
+@startuml
+
+entity "StudentSchoolMaster" {
+    + student_id:生徒ID
+    + school_id:学校ID
+}
+
+@enduml

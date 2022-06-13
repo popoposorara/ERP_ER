@@ -1,0 +1,13 @@
+@startuml
+
+entity "Tutor" {
+    + tutor_id:チューターID
+    + skill_set:担当科目
+    + status:ステータス
+    + grades:学年
+    + current_active_questions:??
+    + open_questions:??
+    + total_resolved_questions:??
+}
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+hide empty members
+
+!$branch="introdule_mana" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "進路管理" as career_management {
+
+$include("Parent_Mana.pu")
+$include("SchoolAdmin_Mana.pu")
+$include("SchoolLevel_Mana.pu")
+$include("SchoolMaster_Mana.pu")
+$include("SchoolType_Mana.pu")
+$include("Student_Mana.pu")
+$include("StudentCourse_Mana.pu")
+$include("StudentParent_Mana.pu")
+$include("StudentSchoolMaster_Mana.pu")
+$include("Teacher_Mana.pu")
+$include("User_Mana.pu")
+$include("Tutor_Mana.pu")
+$include("Coach_Mana.pu")
+$include("StudentAssignedCoach_Mana.pu")
+
+}
+
+User ||--|| SchoolAdmin
+User ||--|| Student
+User ||--|| Teacher
+User ||--|| Parent
+User ||--|| Tutor
+User ||--|| Coach
+StudentAssignedCoach ||--|| Coach
+StudentAssignedCoach ||--|| Student
+StudentParent }|--|| Student
+StudentParent }|--|| Parent
+StudentSchoolMaster }|--|| Student
+StudentSchoolMaster }|--|| SchoolMaster
+SchoolMaster }|--|| StudentCourse
+SchoolMaster }|--|| SchoolLevel
+SchoolMaster }|--|| SchoolType
+
+@enduml

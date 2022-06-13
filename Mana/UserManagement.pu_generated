@@ -1,0 +1,150 @@
+@startuml
+hide empty members
+
+!$branch="introdule_mana" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "進路管理" as career_management {
+
+entity "Parent" {
+    + parent_id:保護者ID
+    + school_id:学校ID
+}
+
+entity "SchoolAdmin" {
+    + school_admin_id:学校管理者ID
+    + school_id:学校ID
+}
+
+entity "SchoolLevel" {
+    + school_level_id:学校レベルID
+    + school_level_name:学校レベル名
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "SchoolMaster" {
+    + school_id:学校ID
+    + school_name: 学校コース名
+    + school_name_phonetic: 学校コース名<ふりがな？>
+    + school_level_id:学校レベルID
+    + school_type_id:学校タイプID
+    + prefecture:県
+    + city:市区町村
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "SchoolType" {
+    + school_type_id:学校タイプID
+    + school_type_name:学校タイプ名
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "Student" {
+    + student_id:生徒ID
+    + current_grade:現在の学年
+    + targent_university:
+    + on_trial : お試し期間判定値
+    + billing_date : 支払い日
+    + birthday : 生年月日
+    + biography : 
+    + total_question_limit: 
+    + school_id : 学校ID
+    + student_enrollment_status: 在籍状況
+    + student_external_id : 生徒外部ID
+    + student_note: 特記事項?
+    + grade :学年
+    + billing_info:支払い情報
+    + update_at:更新日時
+    + created_at:作成日時
+    + deleted_at:削除日時
+    + resource_path:
+    + enrollment_status:
+}
+
+entity "StudentCourse" {
+    + school_course_id:学校コースID
+    + school_course_name: 学校コース名
+    + school_course_name_phonetic: 学校コース名<ふりがな？>
+    + school_id:学校ID
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "StudentParent" {
+    + student_id:生徒ID
+    + parent_id:保護者ID
+    + relationship:続柄
+}
+
+entity "StudentSchoolMaster" {
+    + student_id:生徒ID
+    + school_id:学校ID
+}
+
+entity "Teacher" {
+    + teacher_id:保護者ID
+    + school_ids:学校ID群
+    + school_name:学校名
+}
+
+entity "User" {
+    + user_id:ユーザーID
+    + country:国
+    + name : 姓
+    + given_name :名
+    + avatar : アイコン画像？？
+    + phone_number:携帯番号
+    + email : メールアドレス
+    + device_token : <通知用>デバイストークン
+    + allow_notification : 通知許可設定
+    + user_group : ユーザーグループ
+    + last_login_date : 最終ログイン日時
+    + birthday : 生年月日
+    + gender : 性別
+    + status:ステータス
+    + group:グループ
+    + user_group:
+    + resource_path:
+}
+
+entity "Tutor" {
+    + tutor_id:チューターID
+    + skill_set:担当科目
+    + status:ステータス
+    + grades:学年
+    + current_active_questions:??
+    + open_questions:??
+    + total_resolved_questions:??
+}
+
+entity "Coach" {
+    + coach_id:コーチID
+}
+
+entity "StudentAssignedCoach" {
+    + student_id:生徒ID
+    + coach_id:コーチID
+    + is_active:有効かどうか
+}
+
+
+}
+
+User ||--|| SchoolAdmin
+User ||--|| Student
+User ||--|| Teacher
+User ||--|| Parent
+User ||--|| Tutor
+User ||--|| Coach
+StudentAssignedCoach ||--|| Coach
+StudentAssignedCoach ||--|| Student
+StudentParent }|--|| Student
+StudentParent }|--|| Parent
+StudentSchoolMaster }|--|| Student
+StudentSchoolMaster }|--|| SchoolMaster
+SchoolMaster }|--|| StudentCourse
+SchoolMaster }|--|| SchoolLevel
+SchoolMaster }|--|| SchoolType
+
+@enduml

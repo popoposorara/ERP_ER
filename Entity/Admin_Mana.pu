@@ -1,0 +1,7 @@
+@startuml
+
+entity "Admin" {
+    + admin_id:保護者ID
+}
+
+@enduml

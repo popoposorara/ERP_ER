@@ -1,0 +1,25 @@
+@startuml
+
+entity "Student" {
+    + student_id:生徒ID
+    + current_grade:現在の学年
+    + targent_university:
+    + on_trial : お試し期間判定値
+    + billing_date : 支払い日
+    + birthday : 生年月日
+    + biography : 
+    + total_question_limit: 
+    + school_id : 学校ID
+    + student_enrollment_status: 在籍状況
+    + student_external_id : 生徒外部ID
+    + student_note: 特記事項?
+    + grade :学年
+    + billing_info:支払い情報
+    + update_at:更新日時
+    + created_at:作成日時
+    + deleted_at:削除日時
+    + resource_path:
+    + enrollment_status:
+}
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+
+entity "Staff" {
+    + staff_id:保護者ID
+}
+
+@enduml
