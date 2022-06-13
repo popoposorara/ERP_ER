@@ -1,0 +1,23 @@
+@startuml
+
+entity "User" {
+    + user_id:ユーザーID
+    + country:国
+    + name : 姓
+    + given_name :名
+    + avatar : アイコン画像？？
+    + phone_number:携帯番号
+    + email : メールアドレス
+    + device_token : <通知用>デバイストークン
+    + allow_notification : 通知許可設定
+    + user_group : ユーザーグループ
+    + last_login_date : 最終ログイン日時
+    + birthday : 生年月日
+    + gender : 性別
+    + status:ステータス
+    + group:グループ
+    + user_group:
+    + resource_path:
+}
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+
+entity "StudentAssignedCoach" {
+    + student_id:生徒ID
+    + coach_id:コーチID
+    + is_active:有効かどうか
+}
+
+@enduml

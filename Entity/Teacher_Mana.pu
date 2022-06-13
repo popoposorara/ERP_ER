@@ -1,0 +1,9 @@
+@startuml
+
+entity "Teacher" {
+    + teacher_id:保護者ID
+    + school_ids:学校ID群
+    + school_name:学校名
+}
+
+@enduml
