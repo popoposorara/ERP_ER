@@ -5,9 +5,13 @@ entity "Mana_User" {
     + country:国
     + name : 姓
     + given_name :名
+    # fname1:フリガナ<姓>(add)
+    # fname2:フリガナ<名>(add)
     + avatar : アイコン画像？？
+    # tel:電話番号(add)
     + phone_number:携帯番号
     + email : メールアドレス
+    # portable_email:携帯メールアドレス(add)
     + device_token : <通知用>デバイストークン
     + allow_notification : 通知許可設定
     + user_group : ユーザーグループ
@@ -18,6 +22,11 @@ entity "Mana_User" {
     + group:グループ
     + user_group:
     + resource_path:
+    # zip_cd:郵便番号
+    # pref_id:都道府県ID -> prefecture_id(add)
+    # address1:住所1(add)
+    # address2:住所2(add)
+    # address3:住所3(add)
 }
 
 @enduml

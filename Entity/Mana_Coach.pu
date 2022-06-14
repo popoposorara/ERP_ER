@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_Coach" {
-    + mana_coach_id:コーチID
+    + mana_coach_id:コーチID -> mana_user_id
 }
 
 @enduml

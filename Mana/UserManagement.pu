@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!include https://github.com/popoposorara/ERP_ER/blob/er-student_guidance_record/Mana/UserManagement_package.pu?raw=true
-!include https://github.com/popoposorara/ERP_ER/blob/er-student_guidance_record/Mana/UserManagement_relation.pu?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_package.pu_generated?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_relation.pu?raw=true
 
 @enduml

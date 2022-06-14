@@ -1,0 +1,34 @@
+@startuml
+hide empty members
+
+!$branch="mana-student_guidance_record" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "生徒指導記録" as student_guidance_record {
+
+$include("ER_Branch.pu")
+$include("ER_Customer.pu")
+$include("ER_Interview_type.pu")
+$include("ER_Interview.pu")
+$include("ER_Staff.pu")
+$include("ER_Student.pu")
+
+}
+
+!include https://github.com/popoposorara/ERP_ER/blob/mana-student_guidance_record/Mana/UserManagement_package.pu_generated?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/mana-student_guidance_record/Mana/UserManagement_relation.pu?raw=true
+
+
+ER_Interview ||--|| ER_Student
+ER_Interview ||--|| ER_Branch
+ER_Interview ||--|| ER_Interview_type
+ER_Interview ||--|| ER_Staff
+ER_Student ||--|| ER_Customer
+ER_Branch ||--|| Mana_SchoolMaster
+ER_Customer ||--|| Mana_User
+ER_Student ||--|| Mana_Student
+ER_Staff ||--|| Mana_Teacher
+
+@enduml
