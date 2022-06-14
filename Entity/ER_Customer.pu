@@ -1,0 +1,38 @@
+@startuml
+
+entity "ER_Customer"{
+    + customer_id:顧客ID
+    + mana_user_id:ユーザーID -> mana_user_id
+    - parent_id:保護者ID -> parent_id → (delete)@mana_student_id
+    - kname1:氏名<姓> → (delete)@mana_user_id
+    - kname2:氏名<名> → (delete)@mana_user_id
+    - fname1:フリガナ<姓> → (delete)@mana_user_id
+    - fname2:フリガナ<名> → (delete)@mana_user_id
+    * dm_sendable:DM送信 可/不可
+    - tel:電話番号 → (delete)@mana_user_id
+    - portable_tel:携帯番号 → (delete)@mana_user_id
+    + fax:FAX番号
+    - sex:性別 → (delete)@mana_user_id
+    - grade:学年 → (delete)@mana_student_id
+    - birthday:生年月日 → (delete)@mana_user_id
+    - zip_cd:郵便番号
+    - pref_id:都道府県ID -> prefecture_id → (delete)@mana_user_id
+    - address1:住所1 → (delete)@mana_user_id
+    - address2:住所2 → (delete)@mana_user_id
+    - address3:住所3 → (delete)@mana_user_id
+    - email:メールアドレス(delete)@mana_user_id
+    - portable_email:携帯メールアドレス(delete)@mana_user_id
+    * junior_high_school_id:中学校ID -> school_id -> 全て1つのparamで良さそう
+    * high_school_id:高校ID -> school_id -> 全て1つのparamで良さそう
+    * university_school_id:大学ID -> school_id -> 全て1つのparamで良さそう
+    * other_school_id:その他ID -> school_id -> 全て1つのparamで良さそう
+    + employment:就職先
+    + comment:備考
+    * fix_flg:確定フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml

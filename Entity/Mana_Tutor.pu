@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_Tutor" {
-    + mana_tutor_id:チューターID
+    + mana_tutor_id:チューターID -> mana_user_id
     + skill_set:担当科目
     + status:ステータス
     + grades:学年

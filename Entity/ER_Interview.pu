@@ -1,0 +1,20 @@
+@startuml
+
+entity "ER_Interview"{
+    + interview_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + staff_id:担当者 -> staff_id
+    + branch_id:校ID -> branch_id
+    + interview_date:面談日時
+    + interview_way:面談方法
+    + interview_type_id:面談区分 -> interview_type_id
+    + interview_target_type:面談対象
+    + comment:内容
+    + claim:クレーム
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml
