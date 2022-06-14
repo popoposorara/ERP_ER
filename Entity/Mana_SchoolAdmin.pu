@@ -2,7 +2,7 @@
 
 entity "SchoolAdmin" {
     + school_admin_id:学校管理者ID
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
 }
 
 @enduml
