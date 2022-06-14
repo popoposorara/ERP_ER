@@ -1,6 +1,6 @@
 @startuml
 
-entity "Coach" {
+entity "Mana_Coach" {
     + coach_id:コーチID
 }
 

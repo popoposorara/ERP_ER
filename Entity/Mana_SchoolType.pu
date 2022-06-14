@@ -1,6 +1,6 @@
 @startuml
 
-entity "SchoolType" {
+entity "Mana_SchoolType" {
     + school_type_id:学校タイプID
     + school_type_name:学校タイプ名
     + is_archived:アーカイブ済みかどうか

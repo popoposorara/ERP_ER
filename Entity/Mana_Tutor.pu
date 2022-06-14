@@ -1,6 +1,6 @@
 @startuml
 
-entity "Tutor" {
+entity "Mana_Tutor" {
     + tutor_id:チューターID
     + skill_set:担当科目
     + status:ステータス

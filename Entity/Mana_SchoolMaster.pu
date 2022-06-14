@@ -1,6 +1,6 @@
 @startuml
 
-entity "SchoolMaster" {
+entity "Mana_SchoolMaster" {
     + school_id:学校ID -> school_id
     + school_name: 学校コース名
     + school_name_phonetic: 学校コース名<ふりがな？>

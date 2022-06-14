@@ -10,32 +10,36 @@ namespace "LMS認証情報" as lms_certification_information {
 
 entity "customer"{
     + customer_id:顧客ID
-    + parent_id:該当保護者ID -> parent_id
-    + kname1:生徒氏名<性>
-    + kname2:生徒氏名<名>
-    + fname1:生徒氏名カナ<性>
-    + fname2:生徒氏名カナ<名>
-    + dm_sendable:DM区分
+    + parent_id:保護者ID -> parent_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + dm_sendable:DM送信 可/不可
     + tel:電話番号
     + portable_tel:携帯番号
     + fax:FAX番号
     + sex:性別
-    + grade
+    + grade:学年
     + birthday:生年月日
-    + zip_cd:住所<郵便番号>
-    + pref_id:住所<都道府県> -> prefecture_id
-    + address1:住所<市区町村>
-    + address2:住所<町・番地>
-    + address3:住所<ビル・マンション>
-    + email:PCアドレス
-    + portable_email:携帯アドレス
-    + junior_high_school_id:中学校 -> school_id
-    + high_school_id:高校 -> school_id
-    + university_school_id:大学 -> school_id
-    + other_school_id -> school_id
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> prefecture_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
     + employment:就職先
     + comment:備考
-    + fix_flg:確定
+    + fix_flg:確定フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 entity "school"{
@@ -45,17 +49,23 @@ entity "school"{
 
 entity "student"{
     + student_id:生徒ID
-    + student_no:学籍番号
+    + customer_id:顧客ID -> customer_id
+    + belong_type:所属タイプ
+    + inquiry_id:問合せID -> inquiry_id
     + entry_no:志願者番号
-    + belong_type:所属区分
-    + [生徒番号]
-    + [学籍番号]
-    + [所属校]
-    + [生徒氏名カナ]
-    + [生徒氏名]
-    + [担任]
-    + [主コース]
-    + [生徒区分] 
+    + student_no:生徒番号
+    + start_date:開始日
+    + end_date:終了日
+    + supply_demand_no:就学支援金需給番号
+    + present_date:本部送付日
+    + webentry_receipt_status:web出願入金状況
+    + webentry_price:web出願受験料
+    + webentry_payment:web出願決済方法
+    + webentry_settle_no:web出願決済番号
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 entity "student_school_history"{

@@ -1,6 +1,6 @@
 @startuml
 
-entity "User" {
+entity "Mana_User" {
     + user_id:ユーザーID
     + country:国
     + name : 姓
