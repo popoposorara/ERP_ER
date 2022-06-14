@@ -37,8 +37,13 @@ StudentParent }|--|| Student
 StudentParent }|--|| Parent
 StudentSchoolMaster }|--|| Student
 StudentSchoolMaster }|--|| SchoolMaster
-SchoolMaster }|--|| StudentCourse
 SchoolMaster }|--|| SchoolLevel
 SchoolMaster }|--|| SchoolType
+Teacher ||--|| SchoolMaster
+SchoolAdmin ||--|| SchoolMaster
+Parent ||--|| SchoolMaster
+StudentCourse ||--|| SchoolMaster
+Student ||--|| Student
+Student ||--|| SchoolMaster
 
 @enduml
