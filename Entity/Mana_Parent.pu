@@ -1,8 +1,8 @@
 @startuml
 
 entity "Mana_Parent" {
-    + parent_id:保護者ID
-    + school_id:学校ID -> school_id
+    + mana_parent_id:保護者ID
+    + mana_school_id:学校ID -> mana_school_id
 }
 
 @enduml

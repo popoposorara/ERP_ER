@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_Student" {
-    + student_id:生徒ID
+    + mana_student_id:生徒ID
     + current_grade:現在の学年
     + targent_university:
     + on_trial : お試し期間判定値
@@ -9,9 +9,9 @@ entity "Mana_Student" {
     + birthday : 生年月日
     + biography : 
     + total_question_limit: 
-    + school_id : 学校ID -> school_id
+    + mana_school_id : 学校ID -> mana_school_id
     + student_enrollment_status: 在籍状況
-    + student_external_id : 生徒外部ID -> student_id
+    + mana_student_external_id : 生徒外部ID -> mana_student_id
     + student_note: 特記事項?
     + grade :学年
     + billing_info:支払い情報

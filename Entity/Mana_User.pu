@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_User" {
-    + user_id:ユーザーID
+    + mana_user_id:ユーザーID
     + country:国
     + name : 姓
     + given_name :名
