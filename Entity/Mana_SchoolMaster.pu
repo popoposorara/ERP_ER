@@ -1,11 +1,11 @@
 @startuml
 
 entity "SchoolMaster" {
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
     + school_name: 学校コース名
     + school_name_phonetic: 学校コース名<ふりがな？>
-    + school_level_id:学校レベルID
-    + school_type_id:学校タイプID
+    + school_level_id:学校レベルID -> school_level_id
+    + school_type_id:学校タイプID -> school_type_id
     + prefecture:県
     + city:市区町村
     + is_archived:アーカイブ済みかどうか

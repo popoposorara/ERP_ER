@@ -1,21 +1,21 @@
 @startuml
 hide empty members
 
-!$branch="introdule_mana" 
+!$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-namespace "進路管理" as career_management {
+namespace "UserManagement" as UserManagement {
 
 entity "Parent" {
     + parent_id:保護者ID
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
 }
 
 entity "SchoolAdmin" {
     + school_admin_id:学校管理者ID
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
 }
 
 entity "SchoolLevel" {
@@ -25,11 +25,11 @@ entity "SchoolLevel" {
 }
 
 entity "SchoolMaster" {
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
     + school_name: 学校コース名
     + school_name_phonetic: 学校コース名<ふりがな？>
-    + school_level_id:学校レベルID
-    + school_type_id:学校タイプID
+    + school_level_id:学校レベルID -> school_level_id
+    + school_type_id:学校タイプID -> school_type_id
     + prefecture:県
     + city:市区町村
     + is_archived:アーカイブ済みかどうか
@@ -50,9 +50,9 @@ entity "Student" {
     + birthday : 生年月日
     + biography : 
     + total_question_limit: 
-    + school_id : 学校ID
+    + school_id : 学校ID -> school_id
     + student_enrollment_status: 在籍状況
-    + student_external_id : 生徒外部ID
+    + student_external_id : 生徒外部ID -> student_id
     + student_note: 特記事項?
     + grade :学年
     + billing_info:支払い情報
@@ -67,24 +67,24 @@ entity "StudentCourse" {
     + school_course_id:学校コースID
     + school_course_name: 学校コース名
     + school_course_name_phonetic: 学校コース名<ふりがな？>
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
     + is_archived:アーカイブ済みかどうか
 }
 
 entity "StudentParent" {
-    + student_id:生徒ID
-    + parent_id:保護者ID
+    + student_id:生徒ID -> student_id
+    + parent_id:保護者ID -> parent_id
     + relationship:続柄
 }
 
 entity "StudentSchoolMaster" {
-    + student_id:生徒ID
-    + school_id:学校ID
+    + student_id:生徒ID -> student_id
+    + school_id:学校ID -> school_id
 }
 
 entity "Teacher" {
     + teacher_id:保護者ID
-    + school_ids:学校ID群
+    + school_ids:学校ID群 -> school_id
     + school_name:学校名
 }
 
@@ -123,8 +123,8 @@ entity "Coach" {
 }
 
 entity "StudentAssignedCoach" {
-    + student_id:生徒ID
-    + coach_id:コーチID
+    + student_id:生徒ID -> student_id
+    + coach_id:コーチID -> coach_id
     + is_active:有効かどうか
 }
 

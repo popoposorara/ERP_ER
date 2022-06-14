@@ -1,0 +1,9 @@
+@startuml
+
+entity "StudentParent" {
+    + student_id:生徒ID -> student_id
+    + parent_id:保護者ID -> parent_id
+    + relationship:続柄
+}
+
+@enduml

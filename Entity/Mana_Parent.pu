@@ -2,7 +2,7 @@
 
 entity "Parent" {
     + parent_id:保護者ID
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
 }
 
 @enduml

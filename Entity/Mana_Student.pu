@@ -9,9 +9,9 @@ entity "Student" {
     + birthday : 生年月日
     + biography : 
     + total_question_limit: 
-    + school_id : 学校ID
+    + school_id : 学校ID -> school_id
     + student_enrollment_status: 在籍状況
-    + student_external_id : 生徒外部ID
+    + student_external_id : 生徒外部ID -> student_id
     + student_note: 特記事項?
     + grade :学年
     + billing_info:支払い情報

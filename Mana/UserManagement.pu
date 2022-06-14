@@ -1,27 +1,27 @@
 @startuml
 hide empty members
 
-!$branch="introdule_mana" 
+!$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-namespace "進路管理" as career_management {
+namespace "UserManagement" as UserManagement {
 
-$include("Parent_Mana.pu")
-$include("SchoolAdmin_Mana.pu")
-$include("SchoolLevel_Mana.pu")
-$include("SchoolMaster_Mana.pu")
-$include("SchoolType_Mana.pu")
-$include("Student_Mana.pu")
-$include("StudentCourse_Mana.pu")
-$include("StudentParent_Mana.pu")
-$include("StudentSchoolMaster_Mana.pu")
-$include("Teacher_Mana.pu")
-$include("User_Mana.pu")
-$include("Tutor_Mana.pu")
-$include("Coach_Mana.pu")
-$include("StudentAssignedCoach_Mana.pu")
+$include("Mana_Parent.pu")
+$include("Mana_SchoolAdmin.pu")
+$include("Mana_SchoolLevel.pu")
+$include("Mana_SchoolMaster.pu")
+$include("Mana_SchoolType.pu")
+$include("Mana_Student.pu")
+$include("Mana_StudentCourse.pu")
+$include("Mana_StudentParent.pu")
+$include("Mana_StudentSchoolMaster.pu")
+$include("Mana_Teacher.pu")
+$include("Mana_User.pu")
+$include("Mana_Tutor.pu")
+$include("Mana_Coach.pu")
+$include("Mana_StudentAssignedCoach.pu")
 
 }
 

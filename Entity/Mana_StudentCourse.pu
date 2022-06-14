@@ -4,7 +4,7 @@ entity "StudentCourse" {
     + school_course_id:学校コースID
     + school_course_name: 学校コース名
     + school_course_name_phonetic: 学校コース名<ふりがな？>
-    + school_id:学校ID
+    + school_id:学校ID -> school_id
     + is_archived:アーカイブ済みかどうか
 }
 
