@@ -1,6 +1,6 @@
 @startuml
 
-entity "Student" {
+entity "Mana_Student" {
     + student_id:生徒ID
     + current_grade:現在の学年
     + targent_university:

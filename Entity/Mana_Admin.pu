@@ -1,6 +1,6 @@
 @startuml
 
-entity "Admin" {
+entity "Mana_Admin" {
     + admin_id:保護者ID
 }
 
