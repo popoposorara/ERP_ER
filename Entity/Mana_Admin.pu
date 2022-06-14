@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_Admin" {
-    + admin_id:保護者ID
+    + mana_admin_id:保護者ID
 }
 
 @enduml

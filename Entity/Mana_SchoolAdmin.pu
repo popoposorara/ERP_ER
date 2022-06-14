@@ -1,8 +1,8 @@
 @startuml
 
 entity "Mana_SchoolAdmin" {
-    + school_admin_id:学校管理者ID
-    + school_id:学校ID -> school_id
+    + mana_school_admin_id:学校管理者ID
+    + mana_school_id:学校ID -> mana_school_id
 }
 
 @enduml
