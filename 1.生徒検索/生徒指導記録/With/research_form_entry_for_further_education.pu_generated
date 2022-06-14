@@ -9,38 +9,88 @@ hide empty members
 namespace "調査書入力（進学用）" as research_form_entry_for_further_education {
 
 entity "branch" {
-    + branch_id:学校ID
-    + short_name:学校名
+    + branch_id:校ID -> branch_id
+    + company_type:本部区分 → _named_value【company_type】参照
+    + code:コード
+    + sort:並び順
+    + name:校舎名
+    + short_name:校舎名略称
+    + fname:校舎名カナ → 講師管理系処理の検索で使用
+    + tel:電話番号
+    + fax:FAX番号
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID → _named_value【prefecture】参照 -> prefecture_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel2:電話番号<キャリア>
+    + fax2:FAX番号<キャリア>
+    + zip_cd2:郵便番号<キャリア>
+    + pref_id2:都道府県ID<キャリア> -> prefecture_id
+    + address1_2:住所1<キャリア>
+    + address2_2:住所2<キャリア>
+    + address3_2:住所3<キャリア>
+    + bill_lock:請求ロック → true:校の収納処理を止める
+    + head_staff_id:責任者ID -> staff_id
+    + branch_type:校区分 → 1:校 2:本部 3:倉庫
+    + management_type:管理区分 → 1:直営 2:法人
+    + open_date:開校日
+    + close_date:閉校日
+    + email:メールアドレス
+    + short_tel:短縮番号
+    + capacity:スクーリング最大人数 → スクーリングの上限に利用
+    + school_flg:高校フラグ → true:高校
+    + school_branch_id:高校ID -> school_id
+    + interview_count:面談件数
+    + stamp_id:印影ID → 高校のみ → stamp_id
+    + select_school_flg:高校選択可能フラグ
+    + t_branch_code:高萩校コード → レポート連携用
+    + y_branch_code:養父校コード → レポート連携用
+    + s_branch_code: 専科校コード → レポート連携用
+    + d_branch_code:DWO2校コード → HP連携用
+    + c_branch_code: 専カレ校コード → 専カレ用
+    + corporate_college_flg:法人校専カレフラグ
+    + school_code:高校コード → 高校<高萩、養父>のみ登録される。※証明 書用
+    + deleted:削除フラグ
+    + certificate_lock:証明書承認ロック → true:証明書承認を止める
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 entity "customer"{
     + customer_id:顧客ID
-    + parent_id:該当保護者ID -> parent_id
-    + kname1:生徒氏名<性>
-    + kname2:生徒氏名<名>
-    + fname1:生徒氏名カナ<性>
-    + fname2:生徒氏名カナ<名>
-    + dm_sendable:DM区分
+    + parent_id:保護者ID -> parent_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + dm_sendable:DM送信 可/不可
     + tel:電話番号
     + portable_tel:携帯番号
     + fax:FAX番号
     + sex:性別
-    + grade
+    + grade:学年
     + birthday:生年月日
-    + zip_cd:住所<郵便番号>
-    + pref_id:住所<都道府県> -> prefecture_id
-    + address1:住所<市区町村>
-    + address2:住所<町・番地>
-    + address3:住所<ビル・マンション>
-    + email:PCアドレス
-    + portable_email:携帯アドレス
-    + junior_high_school_id:中学校 -> school_id
-    + high_school_id:高校 -> school_id
-    + university_school_id:大学 -> school_id
-    + other_school_id -> school_id
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> prefecture_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
     + employment:就職先
     + comment:備考
-    + fix_flg:確定
+    + fix_flg:確定フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 entity "student_record"{
@@ -68,24 +118,79 @@ entity "student_record_comment"{
 }
 
 entity "staff"{
-    + staff_id:スタッフID
-    + kname1:名前1
-    + kname2:名前2
+    + staff_id:社員ID
+    + user_id:ユーザID -> user_id
+    + code:社員番号
+    + branch_id:所属校舎ID -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + staff_type:役割 → 10:社員 20:講師 30:スクールスタッフ
+    + pre_staff_type:応募区分
+    + teachable:授業可能フラグ
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + sex:性別
+    + birthday:生年月日
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> prefecture_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + comment:備考
+    + junior_high_school_id:中学校 -> school_id
+    + high_school_id:高校 -> school_id
+    + university_id:大学 -> school_id
+    + grad_school_id:大学院 -> school_id
+    + apply_grade:応募学年
+    + recruit_reporting_method:連絡手法
+    + station_name:最寄駅
+    + railway_id:鉄道ID -> railway_id
+    + route_id:路線ID -> route_id
+    + careers_date:採用日付
+    + correct_teacher_no:添削講師番号
+    + resume_no:履歴書管理番号
+    + health_check_receipt:健康診断受取有無
+    + paper_pass:書類合格有無
+    + mvcl_status:適性検査<MVCL>実施状況
+    + leaved:退職
+    + leave_date:退職日
+    + interview_rating:面接評価
+    + company_output:COMPANY連携出力
+    + regist_changed_at:登録票更新日
+    + main_subject_code:メイン科目コード
+    + deleted:削除フラグ
+    + stamp_id:印影ID -> stamp_id
+    + simple_stamp_id:認印ID -> stamp_id
+    + use_adjust_date:利用調整日
+    + created_at:登録日時 → current_timestamp
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 entity "student"{
     + student_id:生徒ID
-    + student_no:学籍番号
+    + customer_id:顧客ID -> customer_id
+    + belong_type:所属タイプ
+    + inquiry_id:問合せID -> inquiry_id
     + entry_no:志願者番号
-    + belong_type:所属区分
-    + [生徒番号]
-    + [学籍番号]
-    + [所属校]
-    + [生徒氏名カナ]
-    + [生徒氏名]
-    + [担任]
-    + [主コース]
-    + [生徒区分] 
+    + student_no:生徒番号
+    + start_date:開始日
+    + end_date:終了日
+    + supply_demand_no:就学支援金需給番号
+    + present_date:本部送付日
+    + webentry_receipt_status:web出願入金状況
+    + webentry_price:web出願受験料
+    + webentry_payment:web出願決済方法
+    + webentry_settle_no:web出願決済番号
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 
 
