@@ -9,6 +9,7 @@ entity "Mana_User" {
     # fname2:フリガナ<名>(add)
     + avatar : アイコン画像？？
     # tel:電話番号(add)
+    # fax:FAX番号(add)
     + phone_number:携帯番号
     + email : メールアドレス
     # portable_email:携帯メールアドレス(add)
@@ -22,7 +23,7 @@ entity "Mana_User" {
     + group:グループ
     + user_group:
     + resource_path:
-    # zip_cd:郵便番号
+    # zip_cd:郵便番号(add)
     # pref_id:都道府県ID -> prefecture_id(add)
     # address1:住所1(add)
     # address2:住所2(add)

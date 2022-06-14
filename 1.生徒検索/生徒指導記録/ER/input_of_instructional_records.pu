@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="mana-input_of_instructional_records" 
+!$branch="fix-er" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
@@ -9,6 +9,8 @@ hide empty members
 namespace "指導要録入力" as input_of_instructional_records {
 
 $include("ER_Customer.pu")
+$include("ER_Branch.pu")
+$include("ER_StudentInfo.pu")
 
 $include("ER_StudentRecord.pu")
 $include("ER_StudentRecordComment.pu")
@@ -22,8 +24,8 @@ $include("ER_Student.pu")
 
 }
 
-!include https://github.com/popoposorara/ERP_ER/blob/mana-input_of_instructional_records/Mana/UserManagement_package.pu_generated?raw=true
-!include https://github.com/popoposorara/ERP_ER/blob/mana-input_of_instructional_records/Mana/UserManagement_relation.pu?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_package.pu_generated?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_relation.pu?raw=true
 
 
 ER_StudentRecord ||--|| ER_Student
@@ -33,6 +35,9 @@ ER_StudentRecordComment ||--o| ER_StudentRecordCommentIntegratedLearningTimeActi
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
 ER_StudentRecord ||--|{ ER_Staff
+
+ER_StudentInfo ||--|| ER_Student
+ER_StudentInfo ||--|| ER_Branch
 
 ER_Student ||--|| ER_Customer
 ER_Customer ||--|| Mana_User
