@@ -1,0 +1,135 @@
+@startuml
+hide empty members
+
+!$branch="mana-student_guidance_record" 
+!procedure $include($source)
+  !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
+!endprocedure
+
+namespace "UserManagement" as UserManagement {
+
+entity "Mana_Parent" {
+    + mana_parent_id:保護者ID
+    + mana_school_id:学校ID -> mana_school_id
+}
+
+entity "Mana_SchoolAdmin" {
+    + mana_school_admin_id:学校管理者ID
+    + mana_school_id:学校ID -> mana_school_id
+}
+
+entity "Mana_SchoolLevel" {
+    + mana_school_level_id:学校レベルID
+    + school_level_name:学校レベル名
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "Mana_SchoolMaster" {
+    + mana_school_id:学校ID
+    + school_name: 学校名
+    + school_name_phonetic: 学校名<ふりがな？>
+    + mana_school_level_id:学校レベルID -> mana_school_level_id
+    + mana_school_type_id:学校タイプID -> mana_school_type_id
+    + prefecture:県
+    + city:市区町村
+    + is_archived:アーカイブ済みかどうか
+    # zip_cd:郵便番号(add)
+}
+
+entity "Mana_SchoolType" {
+    + mana_school_type_id:学校タイプID
+    + school_type_name:学校タイプ名
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "Mana_Student" {
+    + mana_student_id:生徒ID
+    + current_grade:現在の学年
+    + targent_university:
+    + on_trial : お試し期間判定値
+    + billing_date : 支払い日
+    + birthday : 生年月日
+    + biography : 
+    + total_question_limit: 
+    + mana_school_id : 学校ID -> mana_school_id
+    + student_enrollment_status: 在籍状況
+    + mana_student_external_id : 生徒外部ID -> mana_student_id
+    + student_note: 特記事項?
+    + grade :学年
+    + billing_info:支払い情報
+    + update_at:更新日時
+    + created_at:作成日時
+    + deleted_at:削除日時
+    + resource_path:
+    + enrollment_status:
+}
+
+entity "Mana_StudentCourse" {
+    + mana_school_course_id:学校コースID
+    + school_course_name: 学校コース名
+    + school_course_name_phonetic: 学校コース名<ふりがな？>
+    + mana_school_id:学校ID -> mana_school_id
+    + is_archived:アーカイブ済みかどうか
+}
+
+entity "Mana_StudentParent" {
+    + mana_student_id:生徒ID -> mana_student_id
+    + mana_parent_id:保護者ID -> mana_parent_id
+    + relationship:続柄
+}
+
+entity "Mana_StudentSchoolMaster" {
+    + mana_student_id:生徒ID -> mana_student_id
+    + mana_school_id:学校ID -> mana_school_id
+}
+
+entity "Mana_Teacher" {
+    + mana_teacher_id:保護者ID
+    + mana_school_ids:学校ID群 -> [mana_school_id]
+    + school_name:学校名
+}
+
+entity "Mana_User" {
+    + mana_user_id:ユーザーID
+    + country:国
+    + name : 姓
+    + given_name :名
+    + avatar : アイコン画像？？
+    + phone_number:携帯番号
+    + email : メールアドレス
+    + device_token : <通知用>デバイストークン
+    + allow_notification : 通知許可設定
+    + user_group : ユーザーグループ
+    + last_login_date : 最終ログイン日時
+    + birthday : 生年月日
+    + gender : 性別
+    + status:ステータス
+    + group:グループ
+    + user_group:
+    + resource_path:
+}
+
+entity "Mana_Tutor" {
+    + mana_tutor_id:チューターID
+    + skill_set:担当科目
+    + status:ステータス
+    + grades:学年
+    + current_active_questions:??
+    + open_questions:??
+    + total_resolved_questions:??
+}
+
+entity "Mana_Coach" {
+    + mana_coach_id:コーチID
+}
+
+entity "Mana_StudentAssignedCoach" {
+    + mana_student_id:生徒ID -> mana_student_id
+    + mana_coach_id:コーチID -> mana_coach_id
+    + is_active:有効かどうか
+}
+
+
+}
+
+@enduml
