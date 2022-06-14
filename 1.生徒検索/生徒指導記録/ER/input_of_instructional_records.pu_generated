@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="mana-input_of_instructional_records" 
+!$branch="fix-er" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
@@ -19,24 +19,145 @@ entity "ER_Customer"{
     * dm_sendable:DM送信 可/不可
     - tel:電話番号 → (delete)@mana_user_id
     - portable_tel:携帯番号 → (delete)@mana_user_id
-    + fax:FAX番号
+    - fax:FAX番号 → (delete)@mana_user_id
     - sex:性別 → (delete)@mana_user_id
     - grade:学年 → (delete)@mana_student_id
     - birthday:生年月日 → (delete)@mana_user_id
-    - zip_cd:郵便番号
+    - zip_cd:郵便番号 → (delete)@mana_user_id
     - pref_id:都道府県ID -> prefecture_id → (delete)@mana_user_id
     - address1:住所1 → (delete)@mana_user_id
     - address2:住所2 → (delete)@mana_user_id
     - address3:住所3 → (delete)@mana_user_id
     - email:メールアドレス(delete)@mana_user_id
     - portable_email:携帯メールアドレス(delete)@mana_user_id
-    * junior_high_school_id:中学校ID -> school_id -> 全て1つのparamで良さそう
-    * high_school_id:高校ID -> school_id -> 全て1つのparamで良さそう
-    * university_school_id:大学ID -> school_id -> 全て1つのparamで良さそう
-    * other_school_id:その他ID -> school_id -> 全て1つのparamで良さそう
+    # <u>elementary_school_id:小学校ID<new> -> school_id
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
     + employment:就職先
     + comment:備考
     * fix_flg:確定フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+entity "ER_Branch" {
+    + branch_id:校ID
+    + mana_school_id:学校ID -> mana_school_id
+    + company_type:本部区分 → _named_value【company_type】参照
+    * code:コード
+    * sort:並び順
+    - name:校舎名 → (delete)@mana_school_id
+    - short_name:校舎名略称 → (delete)@mana_school_id
+    - fname:校舎名カナ → 講師管理系処理の検索で使用 → (delete)@mana_school_id
+    + tel:電話番号
+    + fax:FAX番号
+    - zip_cd:郵便番号 → (delete)@mana_school_id
+    - pref_id:都道府県ID → _named_value【prefecture】参照 -> prefecture_id → (delete)@mana_school_id
+    - address1:住所1 → (delete)@mana_school_id
+    - address2:住所2 → (delete)@mana_school_id
+    - address3:住所3 → (delete)@mana_school_id
+    ~ tel2:電話番号<キャリア> → (optinal)
+    ~ fax2:FAX番号<キャリア> → (optinal)
+    ~ zip_cd2:郵便番号<キャリア> → (optinal)
+    ~ pref_id2:都道府県ID<キャリア> -> prefecture_id → → (optinal)
+    ~ address1_2:住所1<キャリア> → (optinal)
+    ~ address2_2:住所2<キャリア> → (optinal)
+    ~ address3_2:住所3<キャリア> → (optinal)
+    * bill_lock:請求ロック → true:校の収納処理を止める
+    + head_staff_id:責任者ID -> staff_id
+    + branch_type:校区分 → 1:校 2:本部 3:倉庫
+    + management_type:管理区分 → 1:直営 2:法人
+    + open_date:開校日
+    + close_date:閉校日
+    + email:メールアドレス
+    + short_tel:短縮番号
+    + capacity:スクーリング最大人数 → スクーリングの上限に利用
+    * school_flg:高校フラグ → true:高校
+    + school_branch_id:高校ID -> school_id
+    * interview_count:面談件数
+    + stamp_id:印影ID → 高校のみ → stamp_id
+    * select_school_flg:高校選択可能フラグ
+    ~ t_branch_code:高萩校コード → レポート連携用 → (optinal)
+    ~ y_branch_code:養父校コード → レポート連携用 → (optinal)
+    ~ s_branch_code: 専科校コード → レポート連携用 → (optinal)
+    ~ d_branch_code:DWO2校コード → HP連携用 → (optinal)
+    ~ c_branch_code: 専カレ校コード → 専カレ用 → (optinal)
+    ~ corporate_college_flg:法人校専カレフラグ → (optinal)
+    ~ school_code:高校コード → 高校<高萩、養父>のみ登録される。※証明 書用 → (optinal)
+    + deleted:削除フラグ
+    * certificate_lock:証明書承認ロック → true:証明書承認を止める
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+entity "ER_StudentInfo"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + branch_id:所属校ID -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + dm_sendable:DM送信可・不可
+    + nationality:国籍
+    + sex:性別
+    + grade:学年
+    + birthday:生年月日
+    + school_staff_id:高校担任ID -> staff_id
+    + campus_staff_id:キャンパス担当ID -> staff_id
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> pref_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度
+    + first_entrance_year:高校入学年度
+    + entry_date:出願日
+    + course_type:高校生区分
+    + entrance_grade:入学学年
+    + entrance_date:入学日
+    + graduate_date:卒業日
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日
+    + regist_credit_num:履修登録単位数
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード
+    + old_school_code:旧通信制高校コード → 2:向陽台高校 3:星槎国際高校
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書 → 専カレ用
+    + working_years:勤務年数 → 専カレ用
+    + working_dates:勤務日数 → 専カレ用
+    + employment:勤務先 → 専カレ用
+    + exam_plan_year:受験予定年 → 専カレ用
+    + start_station:通学区分開始駅
+    + end_station:通学区分終了駅
+    + via_station:通学区分経由駅
+    + ticket_term:通学区分有効期間
+    + specialty_course_type:専攻科コース → 専攻科専用
+    + bill_target_type:請求先
+    + management_branch_id:管理校ID → 専カレ法人校所属の場合のみ設定される -> branch_id
+    + guide_mail_send_flg:案内メール送信フラグ
     + created_at:登録日時
     + created_by:登録者
     + updated_at:更新日時
@@ -170,12 +291,16 @@ entity "ER_Student"{
     + student_id:生徒ID
     + mana_student_id:生徒ID -> mana_student_id
     + customer_id:顧客ID -> customer_id
-    + belong_type:所属タイプ
+    ~ belong_type:所属タイプ → (optinal)
     * inquiry_id:問合せID -> inquiry_id
     + entry_no:志願者番号
     + student_no:生徒番号
     + start_date:開始日
+    # <u>start_type:入学形式<new>
     + end_date:終了日
+    # <u>end_type:退学形式<new>
+    # <u>start_date_of_study_abroad:留学開始日<new>
+    # <u>end_date_of_study_abroad:留学終了日<new>
     + supply_demand_no:就学支援金需給番号
     * present_date:本部送付日
     * webentry_receipt_status:web出願入金状況
@@ -191,8 +316,8 @@ entity "ER_Student"{
 
 }
 
-!include https://github.com/popoposorara/ERP_ER/blob/mana-input_of_instructional_records/Mana/UserManagement_package.pu_generated?raw=true
-!include https://github.com/popoposorara/ERP_ER/blob/mana-input_of_instructional_records/Mana/UserManagement_relation.pu?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_package.pu_generated?raw=true
+!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_relation.pu?raw=true
 
 
 ER_StudentRecord ||--|| ER_Student
@@ -202,6 +327,9 @@ ER_StudentRecordComment ||--o| ER_StudentRecordCommentIntegratedLearningTimeActi
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
 ER_StudentRecord ||--|{ ER_Staff
+
+ER_StudentInfo ||--|| ER_Student
+ER_StudentInfo ||--|| ER_Branch
 
 ER_Student ||--|| ER_Customer
 ER_Customer ||--|| Mana_User
