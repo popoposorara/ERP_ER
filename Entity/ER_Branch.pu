@@ -1,0 +1,40 @@
+@startuml
+
+entity "ER_Branch" {
+    + branch_id:校ID
+    + mana_school_id:学校ID -> mana_school_id
+    + company_type:本部区分 → _named_value【company_type】参照
+    - code:コード → (optinal)
+    - sort:並び順 → (optinal)
+    + tel:電話番号
+    + fax:FAX番号
+    * bill_lock:請求ロック → true:校の収納処理を止める
+    + head_staff_id:責任者ID -> staff_id
+    + branch_type:校区分 → 1:校 2:本部 3:倉庫
+    + management_type:管理区分 → 1:直営 2:法人
+    + open_date:開校日
+    + close_date:閉校日
+    + email:メールアドレス
+    + short_tel:短縮番号
+    + capacity:スクーリング最大人数 → スクーリングの上限に利用
+    * school_flg:高校フラグ → true:高校 → 学校Typeの定義で代用可能そう。
+    * school_branch_id:高校ID -> school_id → 学校Typeの定義で代用可能そう。
+    * interview_count:面談件数
+    * stamp_id:印影ID → 高校のみ → stamp_id
+    * select_school_flg:高校選択可能フラグ
+    - t_branch_code:高萩校コード → レポート連携用 → (optinal)
+    - y_branch_code:養父校コード → レポート連携用 → (optinal)
+    - s_branch_code: 専科校コード → レポート連携用 → (optinal)
+    - d_branch_code:DWO2校コード → HP連携用 → (optinal)
+    - c_branch_code: 専カレ校コード → 専カレ用 → (optinal)
+    - corporate_college_flg:法人校専カレフラグ → (optinal)
+    - school_code:高校コード → 高校<高萩、養父>のみ登録される。※証明 書用 → (optinal)
+    + deleted:削除フラグ
+    * certificate_lock:証明書承認ロック → true:証明書承認を止める
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml

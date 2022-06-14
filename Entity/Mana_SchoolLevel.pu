@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_SchoolLevel" {
-    + school_level_id:学校レベルID
+    + mana_school_level_id:学校レベルID
     + school_level_name:学校レベル名
     + is_archived:アーカイブ済みかどうか
 }

@@ -1,0 +1,25 @@
+@startuml
+hide empty members
+
+Mana_User ||--|| Mana_SchoolAdmin
+Mana_User ||--|| Mana_Student
+Mana_User ||--|| Mana_Teacher
+Mana_User ||--|| Mana_Parent
+Mana_User ||--|| Mana_Tutor
+Mana_User ||--|| Mana_Coach
+Mana_StudentAssignedCoach ||--|| Mana_Coach
+Mana_StudentAssignedCoach ||--|| Mana_Student
+Mana_StudentParent }|--|| Mana_Student
+Mana_StudentParent }|--|| Mana_Parent
+Mana_StudentSchoolMaster }|--|| Mana_Student
+Mana_StudentSchoolMaster }|--|| Mana_SchoolMaster
+Mana_SchoolMaster }|--|| Mana_SchoolLevel
+Mana_SchoolMaster }|--|| Mana_SchoolType
+Mana_Teacher ||--|| Mana_SchoolMaster
+Mana_SchoolAdmin ||--|| Mana_SchoolMaster
+Mana_Parent ||--|| Mana_SchoolMaster
+Mana_StudentCourse ||--|| Mana_SchoolMaster
+Mana_Student ||--|| Mana_Student
+Mana_Student ||--|| Mana_SchoolMaster
+
+@enduml

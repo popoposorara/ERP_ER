@@ -1,7 +1,7 @@
 @startuml
 
 entity "branch" {
-    + branch_id:校ID -> branch_id
+    + branch_id:校ID
     + company_type:本部区分 → _named_value【company_type】参照
     + code:コード
     + sort:並び順

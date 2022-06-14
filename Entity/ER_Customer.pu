@@ -1,0 +1,37 @@
+@startuml
+
+entity "ER_Customer"{
+    + customer_id:顧客ID
+    + parent_id:保護者ID -> parent_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + dm_sendable:DM送信 可/不可
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + fax:FAX番号
+    + sex:性別
+    + grade:学年
+    + birthday:生年月日
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> prefecture_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
+    + employment:就職先
+    + comment:備考
+    + fix_flg:確定フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml

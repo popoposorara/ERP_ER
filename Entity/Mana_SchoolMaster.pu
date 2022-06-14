@@ -1,14 +1,15 @@
 @startuml
 
 entity "Mana_SchoolMaster" {
-    + school_id:学校ID -> school_id
-    + school_name: 学校コース名
-    + school_name_phonetic: 学校コース名<ふりがな？>
-    + school_level_id:学校レベルID -> school_level_id
-    + school_type_id:学校タイプID -> school_type_id
+    + mana_school_id:学校ID
+    + school_name: 学校名
+    + school_name_phonetic: 学校名<ふりがな？>
+    + mana_school_level_id:学校レベルID -> mana_school_level_id
+    + mana_school_type_id:学校タイプID -> mana_school_type_id
     + prefecture:県
     + city:市区町村
     + is_archived:アーカイブ済みかどうか
+    # zip_cd:郵便番号(add)
 }
 
 @enduml

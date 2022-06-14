@@ -1,8 +1,8 @@
 @startuml
 
 entity "Mana_StudentAssignedCoach" {
-    + student_id:生徒ID -> student_id
-    + coach_id:コーチID -> coach_id
+    + mana_student_id:生徒ID -> mana_student_id
+    + mana_coach_id:コーチID -> mana_coach_id
     + is_active:有効かどうか
 }
 
