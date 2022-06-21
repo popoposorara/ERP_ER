@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="fix-input_of_instructional_records" 
+!$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
