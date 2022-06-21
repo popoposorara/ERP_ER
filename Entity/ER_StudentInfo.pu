@@ -1,0 +1,71 @@
+@startuml
+
+entity "ER_StudentInfo"{
+    + student_info_id:生徒情報ID
+    + student_id:生徒ID -> student_id
+    + branch_id:所属校ID -> branch_id
+    + kname1:氏名<姓>
+    + kname2:氏名<名>
+    + fname1:フリガナ<姓>
+    + fname2:フリガナ<名>
+    + dm_sendable:DM送信可・不可
+    + nationality:国籍
+    + sex:性別
+    + grade:学年
+    + birthday:生年月日
+    + school_staff_id:高校担任ID -> staff_id
+    + campus_staff_id:キャンパス担当ID -> staff_id
+    + zip_cd:郵便番号
+    + pref_id:都道府県ID -> pref_id
+    + address1:住所1
+    + address2:住所2
+    + address3:住所3
+    + tel:電話番号
+    + portable_tel:携帯番号
+    + email:メールアドレス
+    + portable_email:携帯メールアドレス
+    + entrance_year:入学年度
+    + first_entrance_year:高校入学年度
+    + entry_date:出願日
+    + course_type:高校生区分
+    + entrance_grade:入学学年
+    + entrance_date:入学日
+    + graduate_date:卒業日
+    + graduate_flg:卒業認定フラグ
+    + graduate_type:卒業区分
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + junior_graduate_date:中学卒業日
+    + regist_credit_num:履修登録単位数
+    + curriculum_id:教育課程 -> curriculum_id
+    + comment:備考
+    + school_branch_id:所属高校ID -> branch_id
+    + entrance_type:受験区分
+    + school_course_type:コース区分
+    + status:手続き区分
+    + study_department_id:課程学科ID -> study_department_id
+    + study_course_id:学習コースID -> study_course_id
+    + study_course_detail_code:コース詳細コード
+    + old_school_code:旧通信制高校コード → 2:向陽台高校 3:星槎国際高校
+    + old_student_no:旧学籍番号
+    + enter_document_flg:入学書類完了フラグ
+    + benefit_answer_flg:給付金回答書 → 専カレ用
+    + working_years:勤務年数 → 専カレ用
+    + working_dates:勤務日数 → 専カレ用
+    + employment:勤務先 → 専カレ用
+    + exam_plan_year:受験予定年 → 専カレ用
+    + start_station:通学区分開始駅
+    + end_station:通学区分終了駅
+    + via_station:通学区分経由駅
+    + ticket_term:通学区分有効期間
+    + specialty_course_type:専攻科コース → 専攻科専用
+    + bill_target_type:請求先
+    + management_branch_id:管理校ID → 専カレ法人校所属の場合のみ設定される -> branch_id
+    + guide_mail_send_flg:案内メール送信フラグ
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml
