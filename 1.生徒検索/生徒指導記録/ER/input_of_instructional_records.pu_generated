@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="fix-er" 
+!$branch="fix-input_of_instructional_records" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
@@ -184,6 +184,10 @@ entity "ER_StudentRecordComment"{
     + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
     + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
     + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_record_comment_disability_status_id:入学時の障害の状態ID-> student_record_comment_disability_status_id
+    + student_record_comment_recode_of_action_id:行動の記録ID -> student_record_comment_recode_of_action_id
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID -> student_record_comment_recode_of_action_for_intellectual_disabilities_id
+    + student_record_comment_recode_of_independence_activity_id:自立活動の記録ID -> student_record_comment_recode_of_independence_activity_id
     + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
     + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
     + comment: 備考
@@ -209,26 +213,207 @@ entity "ER_StudentRecordCommentAttendance"{
     + :出席日数
     + branch_id:学校ID -> branch_id
 }
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 出欠の記録
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- 高等学校（全日制の課程・定時制の課程）指導要録
+- 高等学校（通信制の課程）指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+- ［知的障害者］高等部生徒指導要録
+end note
 
 entity "ER_StudentRecordCommentIntegratedLearningTimeActivity"{
     + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
     + :学習活動
+    + :観点
     + :評価
 }
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 総合的な学習の時間の記録
+  - 総合的な探究の時間の記録
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- 高等学校（全日制の課程・定時制の課程）指導要録
+- 高等学校（通信制の課程）指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］中学部生徒指導要録
+- ［知的障害者］高等部生徒指導要録
+end note
 
 entity "ER_StudentRecordCommentSpecialActivities"{
     + student_record_comment_special_activities_id:特別活動の記録ID
-    + :年度
-    + :内容
+    + :学年<optinal>
+    + :年度<optinal>
+    + student_record_comment_special_activities_content_id:特別活動の記録の内容ID -> student_record_comment_special_activities_content_id
+    + :評価
 }
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 特別活動の記録
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- 高等学校（全日制の課程・定時制の課程）指導要録
+- 高等学校（通信制の課程）指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+end note
+
+entity "ER_StudentRecordCommentSpecialActivitiesContent"{
+    + student_record_comment_special_activities_content_id:特別活動の記録の内容ID
+    + name:名称
+}
+note bottom
+※名称に指定される文字列
+【小学校指導要録 /［特別支援学校］小学部児童指導要録】の場合
+- 学級活動
+- 児童会活動
+- クラブ活動
+- 学校行事
+【中学校指導要録/［特別支援学校］中学部生徒指導要録】の場合
+- 学級活動
+- 生徒会活動
+- 学校行事
+【高等学校（全日制の課程・定時制の課程）/高等学校（通信制の課程）/［特別支援学校］高等部生徒指導要録】の場合
+- ホームルーム活動
+- 生徒会活動
+- 学校行事
+end note
 
 entity "ER_StudentRecordCommentVariousMatters"{
     + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
-    + :年度
+    + :学年<optinal>
+    + :年度<optinal>
     + :学習における特徴等・行動の特徴、特技等
     + :部活動・ボランティア活動等・取得資格、特技等
     + :その他
 }
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 総合所見及び指導上参考となる諸事項
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- 高等学校（全日制の課程・定時制の課程）指導要録
+- 高等学校（通信制の課程）指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+- ［知的障害者］高等部生徒指導要録
+end note
+
+entity "ER_StudentRecordCommentRecordOfAction"{
+    + student_record_comment_recode_of_action_id:行動の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + student_record_comment_recode_of_action_content_id:項目ID -> student_record_comment_recode_of_action_content_id
+    + :評価
+}
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 行動の記録
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+end note
+
+entity "ER_StudentRecordCommentRecordOfActionContent"{
+    + student_record_comment_recode_of_action_content_id:行動の記録の内容ID
+    + :項目名
+}
+note bottom
+※項目名に指定される文字列
+- 基本的な生活習慣
+- 健康・体力の向上
+- 自主・自律
+- 責任感
+- 創意工夫
+- 思いやり・協力
+- 生命尊重・自然愛護
+- 勤労・奉仕
+- 公正・公平
+- 公共心・公徳心
+end note
+
+entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + :内容
+}
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 行動の記録(知的障害者向け)
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+end note
+
+entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
+    + student_record_comment_recode_of_independence_activity_id:自立活動の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + :内容
+    + :評価
+}
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 自立活動の記録
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+end note
+
+entity "ER_StudentRecordCommentDisabilityStatus"{
+    + student_record_comment_disability_status_id:入学時の障害の状態ID
+    + :内容
+}
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 入学時の障害の状態
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+- ［知的障害者］高等部生徒指導要録
+end note
 
 
 entity "ER_Staff"{
@@ -323,9 +508,15 @@ entity "ER_Student"{
 ER_StudentRecord ||--|| ER_Student
 ER_StudentRecord ||--|| ER_StudentRecordComment
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
-ER_StudentRecordComment ||--o| ER_StudentRecordCommentIntegratedLearningTimeActivity
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity
+ER_StudentRecordComment ||--|| ER_StudentRecordCommentDisabilityStatus
+ER_StudentRecordCommentSpecialActivities ||--|| ER_StudentRecordCommentSpecialActivitiesContent
+ER_StudentRecordCommentRecordOfAction ||--|| ER_StudentRecordCommentRecordOfActionContent
 ER_StudentRecord ||--|{ ER_Staff
 
 ER_StudentInfo ||--|| ER_Student
