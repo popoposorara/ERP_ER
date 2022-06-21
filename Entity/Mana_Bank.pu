@@ -1,0 +1,11 @@
+@startuml
+
+entity "Mana_Bank" {
+    + mana_bank_id:銀行ID
+    + code
+    + name
+    + phonetic_name
+    + is_archived:アーカイブ済みかどうか
+}
+
+@enduml

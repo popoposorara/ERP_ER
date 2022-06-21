@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_SchoolLevelGrade" {
+    + mana_level_id:レベルID -> mana_level_id
+    + mana_grade_id:学年ID -> mana_grade_id
+    + resource_path:リソースパス
+}
+
+@enduml

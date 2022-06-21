@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_ParentTag" {
+    + mana_tag_id
+    + name
+    + is_archieved
+}
+
+@enduml

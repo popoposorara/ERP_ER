@@ -1,0 +1,17 @@
+@startuml
+
+entity "Mana_Transportation" {
+    + mana_transportation_id
+    + mana_staff_id -> mana_staff_id
+    + transportation_type
+    + mana_location_id -> mana_location_id
+    + from
+    + to
+    + ammount
+    + round_trip
+    + total
+    + remarks
+    + resource_path
+}
+
+@enduml

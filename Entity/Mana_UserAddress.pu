@@ -1,0 +1,14 @@
+
+@startuml
+
+entity "Mana_UserAddress" {
+    + mana_address_id
+    + mana_user_id -> mana_user_id
+    + type
+    + pastal_code
+    + city
+    + prefecture
+    + street
+}
+
+@enduml

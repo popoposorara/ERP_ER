@@ -1,0 +1,14 @@
+@startuml
+
+entity "Mana_SchoolInfo" {
+    + mana_school_id -> mana_school_id
+    + school_name
+    + school_name_phonetic
+    + mana_school_level_id -> mana_school_level_id
+    + prefecture
+    + city
+    + is_archived:アーカイブ済みかどうか
+    + resource_path:リソースパス
+}
+
+@enduml

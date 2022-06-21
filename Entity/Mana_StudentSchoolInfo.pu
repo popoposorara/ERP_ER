@@ -1,0 +1,12 @@
+@startuml
+
+entity "Mana_StudentSchoolInfo" {
+    + mana_student_id -> mana_student_id
+    + mana_school_id -> mana_school_id
+    + start_date
+    + end_date
+    + transfer_school
+    + resource_path:リソースパス
+}
+
+@enduml

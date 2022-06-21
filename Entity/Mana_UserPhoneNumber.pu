@@ -1,0 +1,11 @@
+
+@startuml
+
+entity "Mana_UserPhoneNumber" {
+    + mana_user_id -> mana_user_id
+    + phone_number_id
+    + ownership
+    + type
+}
+
+@enduml

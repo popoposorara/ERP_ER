@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_Role" {
+    + mana_role_id -> mana_role_id
+    + role_name
+    + resource_path:リソースパス
+}
+
+@enduml

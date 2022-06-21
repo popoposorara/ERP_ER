@@ -19,9 +19,6 @@ entity "Mana_User" {
     + last_login_date : 最終ログイン日時
     + birthday : 生年月日
     + gender : 性別
-    + status:ステータス
-    + group:グループ
-    + user_group:
     + resource_path:
     # zip_cd:郵便番号(add)
     # pref_id:都道府県ID -> prefecture_id(add)
