@@ -1,7 +1,7 @@
 @startuml
 hide empty members
 
-!$branch="fix-er" 
+!$branch="fix-input_of_instructional_records" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
@@ -17,7 +17,13 @@ $include("ER_StudentRecordComment.pu")
 $include("ER_StudentRecordCommentAttendance.pu")
 $include("ER_StudentRecordCommentIntegratedLearningTimeActivity.pu")
 $include("ER_StudentRecordCommentSpecialActivities.pu")
+$include("ER_StudentRecordCommentSpecialActivitiesContent.pu")
 $include("ER_StudentRecordCommentVariousMatters.pu")
+$include("ER_StudentRecordCommentRecordOfAction.pu")
+$include("ER_StudentRecordCommentRecordOfActionContent.pu")
+$include("ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities.pu")
+$include("ER_StudentRecordCommentRecordOfIndependenceActivity.pu")
+$include("ER_StudentRecordCommentDisabilityStatus.pu")
 
 $include("ER_Staff.pu")
 $include("ER_Student.pu")
@@ -31,9 +37,15 @@ $include("ER_Student.pu")
 ER_StudentRecord ||--|| ER_Student
 ER_StudentRecord ||--|| ER_StudentRecordComment
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
-ER_StudentRecordComment ||--o| ER_StudentRecordCommentIntegratedLearningTimeActivity
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity
+ER_StudentRecordComment ||--|| ER_StudentRecordCommentDisabilityStatus
+ER_StudentRecordCommentSpecialActivities ||--|| ER_StudentRecordCommentSpecialActivitiesContent
+ER_StudentRecordCommentRecordOfAction ||--|| ER_StudentRecordCommentRecordOfActionContent
 ER_StudentRecord ||--|{ ER_Staff
 
 ER_StudentInfo ||--|| ER_Student

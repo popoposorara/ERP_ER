@@ -1,0 +1,22 @@
+@startuml
+
+entity "ER_StudentRecordCommentRecordOfActionContent"{
+    + student_record_comment_recode_of_action_content_id:行動の記録の内容ID
+    + :項目名
+}
+
+note bottom
+※項目名に指定される文字列
+- 基本的な生活習慣
+- 健康・体力の向上
+- 自主・自律
+- 責任感
+- 創意工夫
+- 思いやり・協力
+- 生命尊重・自然愛護
+- 勤労・奉仕
+- 公正・公平
+- 公共心・公徳心
+end note
+
+@enduml
