@@ -1,0 +1,22 @@
+@startuml
+
+entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + :内容
+}
+
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 行動の記録(知的障害者向け)
+end note
+
+note bottom
+指導要録（参考様式）における下記で利用
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+
+end note
+
+@enduml

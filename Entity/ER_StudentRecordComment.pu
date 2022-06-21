@@ -6,6 +6,10 @@ entity "ER_StudentRecordComment"{
     + student_record_comment_special_activities_id:特別活動の記録ID -> student_record_comment_special_activities_id
     + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID -> student_record_comment_various_matters_id
     + student_record_comment_attendance_id:出席ID -> student_record_comment_attendance_id
+    + student_record_comment_disability_status_id:入学時の障害の状態ID-> student_record_comment_disability_status_id
+    + student_record_comment_recode_of_action_id:行動の記録ID -> student_record_comment_recode_of_action_id
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID -> student_record_comment_recode_of_action_for_intellectual_disabilities_id
+    + student_record_comment_recode_of_independence_activity_id:自立活動の記録ID -> student_record_comment_recode_of_independence_activity_id
     + student_medical_checkup_id:身体状況ID -> student_medical_checkup_id
     + student_strengths_id:本人の長所・推薦事由等ID -> student_strengths_id
     + comment: 備考

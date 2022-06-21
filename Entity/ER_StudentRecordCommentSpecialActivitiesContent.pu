@@ -1,0 +1,26 @@
+@startuml
+
+entity "ER_StudentRecordCommentSpecialActivitiesContent"{
+    + student_record_comment_special_activities_content_id:特別活動の記録の内容ID
+    + name:名称
+}
+
+note bottom
+※名称に指定される文字列
+【小学校指導要録 /［特別支援学校］小学部児童指導要録】の場合
+- 学級活動
+- 児童会活動
+- クラブ活動
+- 学校行事
+【中学校指導要録/［特別支援学校］中学部生徒指導要録】の場合
+- 学級活動
+- 生徒会活動
+- 学校行事
+【高等学校（全日制の課程・定時制の課程）/高等学校（通信制の課程）/［特別支援学校］高等部生徒指導要録】の場合
+- ホームルーム活動
+- 生徒会活動
+- 学校行事
+
+end note
+
+@enduml

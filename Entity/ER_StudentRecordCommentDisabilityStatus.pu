@@ -1,32 +1,22 @@
 @startuml
 
-entity "ER_StudentRecordCommentIntegratedLearningTimeActivity"{
-    + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :学習活動
-    + :観点
-    + :評価
+entity "ER_StudentRecordCommentDisabilityStatus"{
+    + student_record_comment_disability_status_id:入学時の障害の状態ID
+    + :内容
 }
-
 note right
 指導要録（参考様式）における下記の項目で利用
-  - 総合的な学習の時間の記録
-  - 総合的な探究の時間の記録
+  - 入学時の障害の状態
 end note
 
 note bottom
 指導要録（参考様式）における下記で利用
-- 小学校指導要録
-- 中学校指導要録
-- 高等学校（全日制の課程・定時制の課程）指導要録
-- 高等学校（通信制の課程）指導要録
 - ［知的障害者以外の特別支援学校］小学部児童指導要録
 - ［知的障害者以外の特別支援学校］中学部生徒指導要録
 - ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］小学部児童指導要録
 - ［知的障害者］中学部生徒指導要録
 - ［知的障害者］高等部生徒指導要録
-
 end note
 
 @enduml

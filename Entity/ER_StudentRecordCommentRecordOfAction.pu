@@ -1,0 +1,23 @@
+@startuml
+
+entity "ER_StudentRecordCommentRecordOfAction"{
+    + student_record_comment_recode_of_action_id:行動の記録ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + student_record_comment_recode_of_action_content_id:項目ID -> student_record_comment_recode_of_action_content_id
+    + :評価
+}
+note right
+指導要録（参考様式）における下記の項目で利用
+  - 行動の記録
+end note
+
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+end note
+
+@enduml
