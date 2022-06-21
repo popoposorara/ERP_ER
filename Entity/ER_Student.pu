@@ -4,12 +4,16 @@ entity "ER_Student"{
     + student_id:生徒ID
     + mana_student_id:生徒ID -> mana_student_id
     + customer_id:顧客ID -> customer_id
-    + belong_type:所属タイプ
+    ~ belong_type:所属タイプ → (optinal)
     * inquiry_id:問合せID -> inquiry_id
     + entry_no:志願者番号
     + student_no:生徒番号
     + start_date:開始日
+    # <u>start_type:入学形式<new>
     + end_date:終了日
+    # <u>end_type:退学形式<new>
+    # <u>start_date_of_study_abroad:留学開始日<new>
+    # <u>end_date_of_study_abroad:留学終了日<new>
     + supply_demand_no:就学支援金需給番号
     * present_date:本部送付日
     * webentry_receipt_status:web出願入金状況

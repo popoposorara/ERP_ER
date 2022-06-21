@@ -11,21 +11,22 @@ entity "ER_Customer"{
     * dm_sendable:DM送信 可/不可
     - tel:電話番号 → (delete)@mana_user_id
     - portable_tel:携帯番号 → (delete)@mana_user_id
-    + fax:FAX番号
+    - fax:FAX番号 → (delete)@mana_user_id
     - sex:性別 → (delete)@mana_user_id
     - grade:学年 → (delete)@mana_student_id
     - birthday:生年月日 → (delete)@mana_user_id
-    - zip_cd:郵便番号
+    - zip_cd:郵便番号 → (delete)@mana_user_id
     - pref_id:都道府県ID -> prefecture_id → (delete)@mana_user_id
     - address1:住所1 → (delete)@mana_user_id
     - address2:住所2 → (delete)@mana_user_id
     - address3:住所3 → (delete)@mana_user_id
     - email:メールアドレス(delete)@mana_user_id
     - portable_email:携帯メールアドレス(delete)@mana_user_id
-    * junior_high_school_id:中学校ID -> school_id -> 全て1つのparamで良さそう
-    * high_school_id:高校ID -> school_id -> 全て1つのparamで良さそう
-    * university_school_id:大学ID -> school_id -> 全て1つのparamで良さそう
-    * other_school_id:その他ID -> school_id -> 全て1つのparamで良さそう
+    # <u>elementary_school_id:小学校ID<new> -> school_id
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
     + employment:就職先
     + comment:備考
     * fix_flg:確定フラグ

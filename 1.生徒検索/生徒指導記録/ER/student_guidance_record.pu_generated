@@ -24,13 +24,13 @@ entity "ER_Branch" {
     - address1:住所1 → (delete)@mana_school_id
     - address2:住所2 → (delete)@mana_school_id
     - address3:住所3 → (delete)@mana_school_id
-    - tel2:電話番号<キャリア> → (delete)@mana_school_id
-    - fax2:FAX番号<キャリア> → (delete)@mana_school_id
-    - zip_cd2:郵便番号<キャリア> → (delete)@mana_school_id
-    - pref_id2:都道府県ID<キャリア> -> prefecture_id → (delete)@mana_school_id
-    - address1_2:住所1<キャリア> → (delete)@mana_school_id
-    - address2_2:住所2<キャリア> → (delete)@mana_school_id
-    - address3_2:住所3<キャリア> → (delete)@mana_school_id
+    ~ tel2:電話番号<キャリア> → (optinal)
+    ~ fax2:FAX番号<キャリア> → (optinal)
+    ~ zip_cd2:郵便番号<キャリア> → (optinal)
+    ~ pref_id2:都道府県ID<キャリア> -> prefecture_id → → (optinal)
+    ~ address1_2:住所1<キャリア> → (optinal)
+    ~ address2_2:住所2<キャリア> → (optinal)
+    ~ address3_2:住所3<キャリア> → (optinal)
     * bill_lock:請求ロック → true:校の収納処理を止める
     + head_staff_id:責任者ID -> staff_id
     + branch_type:校区分 → 1:校 2:本部 3:倉庫
@@ -40,8 +40,8 @@ entity "ER_Branch" {
     + email:メールアドレス
     + short_tel:短縮番号
     + capacity:スクーリング最大人数 → スクーリングの上限に利用
-    * school_flg:高校フラグ → true:高校 → 学校Typeの定義で代用可能そう。
-    * school_branch_id:高校ID -> school_id → 学校Typeの定義で代用可能そう。
+    * school_flg:高校フラグ → true:高校
+    + school_branch_id:高校ID -> school_id
     * interview_count:面談件数
     + stamp_id:印影ID → 高校のみ → stamp_id
     * select_school_flg:高校選択可能フラグ
@@ -71,21 +71,22 @@ entity "ER_Customer"{
     * dm_sendable:DM送信 可/不可
     - tel:電話番号 → (delete)@mana_user_id
     - portable_tel:携帯番号 → (delete)@mana_user_id
-    + fax:FAX番号
+    - fax:FAX番号 → (delete)@mana_user_id
     - sex:性別 → (delete)@mana_user_id
     - grade:学年 → (delete)@mana_student_id
     - birthday:生年月日 → (delete)@mana_user_id
-    - zip_cd:郵便番号
+    - zip_cd:郵便番号 → (delete)@mana_user_id
     - pref_id:都道府県ID -> prefecture_id → (delete)@mana_user_id
     - address1:住所1 → (delete)@mana_user_id
     - address2:住所2 → (delete)@mana_user_id
     - address3:住所3 → (delete)@mana_user_id
     - email:メールアドレス(delete)@mana_user_id
     - portable_email:携帯メールアドレス(delete)@mana_user_id
-    * junior_high_school_id:中学校ID -> school_id -> 全て1つのparamで良さそう
-    * high_school_id:高校ID -> school_id -> 全て1つのparamで良さそう
-    * university_school_id:大学ID -> school_id -> 全て1つのparamで良さそう
-    * other_school_id:その他ID -> school_id -> 全て1つのparamで良さそう
+    # <u>elementary_school_id:小学校ID<new> -> school_id
+    + junior_high_school_id:中学校ID -> school_id
+    + high_school_id:高校ID -> school_id
+    + university_school_id:大学ID -> school_id
+    + other_school_id:その他ID -> school_id
     + employment:就職先
     + comment:備考
     * fix_flg:確定フラグ
@@ -183,12 +184,16 @@ entity "ER_Student"{
     + student_id:生徒ID
     + mana_student_id:生徒ID -> mana_student_id
     + customer_id:顧客ID -> customer_id
-    + belong_type:所属タイプ
+    ~ belong_type:所属タイプ → (optinal)
     * inquiry_id:問合せID -> inquiry_id
     + entry_no:志願者番号
     + student_no:生徒番号
     + start_date:開始日
+    # <u>start_type:入学形式<new>
     + end_date:終了日
+    # <u>end_type:退学形式<new>
+    # <u>start_date_of_study_abroad:留学開始日<new>
+    # <u>end_date_of_study_abroad:留学終了日<new>
     + supply_demand_no:就学支援金需給番号
     * present_date:本部送付日
     * webentry_receipt_status:web出願入金状況

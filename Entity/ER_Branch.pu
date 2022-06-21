@@ -16,13 +16,13 @@ entity "ER_Branch" {
     - address1:住所1 → (delete)@mana_school_id
     - address2:住所2 → (delete)@mana_school_id
     - address3:住所3 → (delete)@mana_school_id
-    - tel2:電話番号<キャリア> → (delete)@mana_school_id
-    - fax2:FAX番号<キャリア> → (delete)@mana_school_id
-    - zip_cd2:郵便番号<キャリア> → (delete)@mana_school_id
-    - pref_id2:都道府県ID<キャリア> -> prefecture_id → (delete)@mana_school_id
-    - address1_2:住所1<キャリア> → (delete)@mana_school_id
-    - address2_2:住所2<キャリア> → (delete)@mana_school_id
-    - address3_2:住所3<キャリア> → (delete)@mana_school_id
+    ~ tel2:電話番号<キャリア> → (optinal)
+    ~ fax2:FAX番号<キャリア> → (optinal)
+    ~ zip_cd2:郵便番号<キャリア> → (optinal)
+    ~ pref_id2:都道府県ID<キャリア> -> prefecture_id → → (optinal)
+    ~ address1_2:住所1<キャリア> → (optinal)
+    ~ address2_2:住所2<キャリア> → (optinal)
+    ~ address3_2:住所3<キャリア> → (optinal)
     * bill_lock:請求ロック → true:校の収納処理を止める
     + head_staff_id:責任者ID -> staff_id
     + branch_type:校区分 → 1:校 2:本部 3:倉庫
@@ -32,8 +32,8 @@ entity "ER_Branch" {
     + email:メールアドレス
     + short_tel:短縮番号
     + capacity:スクーリング最大人数 → スクーリングの上限に利用
-    * school_flg:高校フラグ → true:高校 → 学校Typeの定義で代用可能そう。
-    * school_branch_id:高校ID -> school_id → 学校Typeの定義で代用可能そう。
+    * school_flg:高校フラグ → true:高校
+    + school_branch_id:高校ID -> school_id
     * interview_count:面談件数
     + stamp_id:印影ID → 高校のみ → stamp_id
     * select_school_flg:高校選択可能フラグ
