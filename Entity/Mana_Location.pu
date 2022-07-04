@@ -1,0 +1,7 @@
+@startuml
+
+entity "Mana_Location" {
+    + mana_location_id
+}
+
+@enduml

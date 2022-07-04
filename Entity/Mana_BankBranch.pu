@@ -1,0 +1,12 @@
+@startuml
+
+entity "Mana_BankBranch" {
+    + mana_bank_branch_id:銀行口座ID
+    + mana_bank_id:銀行ID -> mana_bank_id
+    + code
+    + name
+    + phonetic_name
+    + is_archived:アーカイブ済みかどうか
+}
+
+@enduml

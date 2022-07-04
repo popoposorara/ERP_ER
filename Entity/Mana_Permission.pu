@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_Permission" {
+    + mana_permission_id
+    + permission_name
+    + resource_path:リソースパス
+}
+
+@enduml

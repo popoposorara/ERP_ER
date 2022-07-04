@@ -1,25 +1,52 @@
 @startuml
-hide empty members
 
-Mana_User ||--|| Mana_SchoolAdmin
-Mana_User ||--|| Mana_Student
-Mana_User ||--|| Mana_Teacher
-Mana_User ||--|| Mana_Parent
-Mana_User ||--|| Mana_Tutor
-Mana_User ||--|| Mana_Coach
-Mana_StudentAssignedCoach ||--|| Mana_Coach
-Mana_StudentAssignedCoach ||--|| Mana_Student
+Mana_Grade ||--|{ Mana_SchoolLevelGrade
+Mana_StudentTag ||--|{ Mana_TaggedStudent
+Mana_Location ||--|{ Mana_GrantedRoleAccessPath
+Mana_Location ||--|{ Mana_UserAccessPath
+Mana_ParentTag ||--|{  Mana_TaggedParent
+
+Mana_SchoolLevelGrade }|--|| Mana_SchoolLevel
+Mana_SchoolLevel }|--|| Mana_SchoolInfo
+Mana_GrantedRoleAccessPath }|--|| Mana_GrantedRole
+Mana_StudentPaymentDetail }|--|| Mana_BankBranch
+Mana_StudentPaymentDetail  ||--|| Mana_Student
+Mana_BankBranch }|--|| Mana_Bank
+
+Mana_StudentSchoolCource }|--|| Mana_SchoolCource
+Mana_StudentSchoolCource }|--|| Mana_Student
+Mana_SchoolCource }|--|| Mana_SchoolInfo
+Mana_SchoolCource }|--|| Mana_Student
+
+Mana_SchoolInfo ||--|{ Mana_StudentSchoolInfo
+
+Mana_StudentSchoolInfo }|--|| Mana_Student
+Mana_TaggedStudent }|--|| Mana_Student
+
+Mana_TaggedParent  }|--|| Mana_Parent
+Mana_Parent ||--|{ Mana_StudentParent
+Mana_Parent ||--|| Mana_User
+Mana_StudentAccessPathHistory }|--|| Mana_Student
+
+Mana_UserAccessPath }|--|| Mana_User
 Mana_StudentParent }|--|| Mana_Student
-Mana_StudentParent }|--|| Mana_Parent
-Mana_StudentSchoolMaster }|--|| Mana_Student
-Mana_StudentSchoolMaster }|--|| Mana_SchoolMaster
-Mana_SchoolMaster }|--|| Mana_SchoolLevel
-Mana_SchoolMaster }|--|| Mana_SchoolType
-Mana_Teacher ||--|| Mana_SchoolMaster
-Mana_SchoolAdmin ||--|| Mana_SchoolMaster
-Mana_Parent ||--|| Mana_SchoolMaster
-Mana_StudentCourse ||--|| Mana_SchoolMaster
-Mana_Student ||--|| Mana_Student
-Mana_Student ||--|| Mana_SchoolMaster
+
+Mana_Permission ||--|{ Mana_PermissionRole
+Mana_PermissionRole }|--|| Mana_Role
+Mana_Role ||--|{ Mana_GrantedRole
+
+Mana_GrantedRole }|--|| Mana_UserGroup
+
+Mana_UserGroup ||--|{ Mana_UserGroupMember
+Mana_UserGroupMember }|--|| Mana_User
+
+Mana_User ||--|| Mana_Student
+Mana_User ||--|{ Mana_UserAddress
+Mana_User ||--|{ Mana_UserPhoneNumber
+Mana_User ||--|| Mana_Staff
+
+Mana_UserPhoneNumber }|--|| Mana_PhoneNumber
+
+Mana_Transportation }|--|| Mana_Staff
 
 @enduml

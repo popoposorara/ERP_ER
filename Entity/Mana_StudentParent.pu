@@ -4,6 +4,7 @@ entity "Mana_StudentParent" {
     + mana_student_id:生徒ID -> mana_student_id
     + mana_parent_id:保護者ID -> mana_parent_id
     + relationship:続柄
+    + resource_path:リソースパス
 }
 
 @enduml

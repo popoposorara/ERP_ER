@@ -2,6 +2,8 @@
 
 entity "Mana_Staff" {
     + mana_staff_id:保護者ID
+    + auto_create_timesheet
+    + resource_path
 }
 
 @enduml

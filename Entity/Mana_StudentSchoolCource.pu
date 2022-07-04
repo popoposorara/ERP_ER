@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_StudentSchoolCource" {
+    + mana_student_id -> mana_student_id
+    + school_cource_id -> school_cource_id
+    + resource_path:リソースパス
+}
+
+@enduml

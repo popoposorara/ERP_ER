@@ -1,0 +1,9 @@
+
+@startuml
+
+entity "Mana_TaggedStudent" {
+    + mana_tag_id
+    + mana_student_id -> mana_student_id
+}
+
+@enduml

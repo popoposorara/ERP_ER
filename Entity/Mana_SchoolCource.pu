@@ -1,0 +1,12 @@
+@startuml
+
+entity "Mana_SchoolCource" {
+    + mana_school_cource_id
+    + school_cource_name
+    + school_cource_name_phonetic
+    + mana_school_id -> mana_school_id
+    + is_archived:アーカイブ済みかどうか
+    + resource_path:リソースパス
+}
+
+@enduml

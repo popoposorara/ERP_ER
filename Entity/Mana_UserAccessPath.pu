@@ -1,0 +1,10 @@
+@startuml
+
+entity "Mana_UserAccessPath" {
+    + mana_user_id -> mana_user_id
+    + access_path
+    + mana_location_id -> mana_location_id
+    + resource_path
+}
+
+@enduml

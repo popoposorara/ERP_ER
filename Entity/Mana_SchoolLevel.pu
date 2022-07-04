@@ -1,9 +1,11 @@
 @startuml
 
 entity "Mana_SchoolLevel" {
-    + mana_school_level_id:学校レベルID
-    + school_level_name:学校レベル名
+    + mana_school_id:学校ID -> mana_school_id
+    + mana_level_id:レベルID -> mana_level_id
+    + level_name:レベル名
     + is_archived:アーカイブ済みかどうか
+    + resource_path:リソースパス
 }
 
 @enduml

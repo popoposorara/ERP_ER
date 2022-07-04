@@ -1,0 +1,10 @@
+@startuml
+
+entity "Mana_GrantedRoleAccessPath" {
+    + mana_granted_role_id
+    + mana_location_id -> mana_location_id
+    + access_path:アクセスパス
+    + resource_path:リソースパス
+}
+
+@enduml

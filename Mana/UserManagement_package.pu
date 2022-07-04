@@ -1,27 +1,51 @@
 @startuml
 hide empty members
 
-!$branch="mana-student_guidance_record" 
+!$branch="update-mana-er" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
 namespace "UserManagement" as UserManagement {
 
-$include("Mana_Parent.pu")
-$include("Mana_SchoolAdmin.pu")
+$include("Mana_SchoolLevelGrade.pu")
 $include("Mana_SchoolLevel.pu")
-$include("Mana_SchoolMaster.pu")
-$include("Mana_SchoolType.pu")
+$include("Mana_GrantedRoleAccessPath.pu")
+$include("Mana_StudentPaymentDetail.pu")
+$include("Mana_BankBranch.pu")
+$include("Mana_Bank.pu")
+$include("Mana_StudentSchoolCource.pu")
+$include("Mana_SchoolCource.pu")
+$include("Mana_SchoolInfo.pu")
+$include("Mana_StudentSchoolInfo.pu")
+$include("Mana_TaggedStudent.pu")
+$include("Mana_TaggedParent.pu")
 $include("Mana_Student.pu")
-$include("Mana_StudentCourse.pu")
+$include("Mana_Parent.pu")
+$include("Mana_StudentAccessPathHistory.pu")
+$include("Mana_UserAccessPath.pu")
 $include("Mana_StudentParent.pu")
-$include("Mana_StudentSchoolMaster.pu")
-$include("Mana_Teacher.pu")
+$include("Mana_Permission.pu")
+$include("Mana_PermissionRole.pu")
+$include("Mana_Role.pu")
+$include("Mana_GrantedRole.pu")
+$include("Mana_UserGroup.pu")
+$include("Mana_UserGroupMember.pu")
 $include("Mana_User.pu")
-$include("Mana_Tutor.pu")
-$include("Mana_Coach.pu")
-$include("Mana_StudentAssignedCoach.pu")
+$include("Mana_UserAddress.pu")
+$include("Mana_UserPhoneNumber.pu")
+$include("Mana_PhoneNumber.pu")
+$include("Mana_Transportation.pu")
+$include("Mana_Staff.pu")
+
+}
+
+namespace "MasterManagement" as MasterManagement {
+
+$include("Mana_Grade.pu")
+$include("Mana_StudentTag.pu")
+$include("Mana_Location.pu")
+$include("Mana_ParentTag.pu")
 
 }
 

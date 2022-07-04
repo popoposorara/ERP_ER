@@ -1,0 +1,17 @@
+@startuml
+
+entity "Mana_StudentPaymentDetail" {
+    + mana_student_id:学生ID -> mana_student_id
+    + mana_bank_branch_id:銀行支店ID -> mana_bank_branch_id
+    + phone_number:携帯番号
+    + mana_address_id:住所ID -> mana_address_id
+    + payment_method:支払い方法
+    + account_number:口座番号
+    + account_holder:名義人
+    + account_type:口座種別
+    + verification_status:
+    + payee 
+    + payee_phone_number
+}
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+
+entity "Mana_UserGroup" {
+    + mana_user_group_id
+    + user_group_name
+    + resource_path
+}
+
+@enduml
