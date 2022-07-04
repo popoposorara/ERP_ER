@@ -1,7 +1,7 @@
 
 @startuml
 
-entity "Mana_TaggedStudent" {
+entity "Mana_TaggedParent" {
     + mana_tag_id
     + mana_parent_id -> mana_parent_id
 }
