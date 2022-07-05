@@ -20,7 +20,7 @@ entity "ER_StudentRecordCommentAttendance"{
     + :出席日数
     + branch_id:学校ID -> branch_id
 }
-note right
+note bottom
 指導要録（参考様式）における下記の項目で利用
   - 出欠の記録
 end note

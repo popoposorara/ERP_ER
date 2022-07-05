@@ -11,7 +11,7 @@ entity "ER_Student"{
     + start_date:開始日
     # <u>start_type:入学形式<new>
     + end_date:終了日
-    # <u>end_type:退学形式<new>
+    # <u>end_type:終学形式<new>
     # <u>start_date_of_study_abroad:留学開始日<new>
     # <u>end_date_of_study_abroad:留学終了日<new>
     + supply_demand_no:就学支援金需給番号

@@ -7,7 +7,7 @@ entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
     + :内容
 }
 
-note right
+note bottom
 指導要録（参考様式）における下記の項目で利用
   - 行動の記録(知的障害者向け)
 end note

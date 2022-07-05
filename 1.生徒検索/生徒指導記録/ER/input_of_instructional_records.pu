@@ -1,16 +1,15 @@
 @startuml
 hide empty members
 
+skinparam dpi 100
+
 !$branch="main" 
 !procedure $include($source)
   !include https://github.com/popoposorara/ERP_ER/blob/$branch/Entity/$source?raw=true
 !endprocedure
 
-namespace "指導要録入力" as input_of_instructional_records {
+namespace "指導要録入力/調査書" as input_of_instructional_records {
 
-$include("ER_Customer.pu")
-$include("ER_Branch.pu")
-$include("ER_StudentInfo.pu")
 
 $include("ER_StudentRecord.pu")
 $include("ER_StudentRecordComment.pu")
@@ -24,18 +23,136 @@ $include("ER_StudentRecordCommentRecordOfActionContent.pu")
 $include("ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities.pu")
 $include("ER_StudentRecordCommentRecordOfIndependenceActivity.pu")
 $include("ER_StudentRecordCommentDisabilityStatus.pu")
-
-$include("ER_Staff.pu")
-$include("ER_Student.pu")
+$include("ER_StudentRecordCommentVariousHelpfulContentsInTeaching.pu")
+$include("ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent.pu")
 
 }
 
-!include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_package.pu_generated?raw=true
+namespace "その他" as other {
+
+$include("ER_Branch.pu")
+note right
+参照Param
+  - branch_id
+  - mana_school_id
+end note
+$include("ER_Customer.pu")
+note right
+参照Param
+  - customer_id
+  - mana_user_id
+  - junior_high_school_id
+  - high_school_id
+  - university_school_id
+  - other_school_id
+  - employment
+end note
+$include("ER_Staff.pu")
+note right
+参照Param
+  - staff_id
+  - mana_teacher_id
+  - user_id
+end note
+$include("ER_Student.pu")
+note right
+参照Param
+  - student_id
+  - mana_student_id
+  - customer_id
+  - start_date:
+  - start_type:
+  - end_date:
+  - end_type:
+  - start_date_of_study_abroad:
+  - end_date_of_study_abroad:
+end note
+$include("ER_StudentInfo.pu")
+note right
+参照Param
+  - student_id
+  - branch_id
+end note
+
+$include("ER_UserInfo.pu")
+note right
+参照Param
+  - user_id
+end note
+}
+
+namespace "UserManagement" as UserManagement {
+
+$include("Mana_SchoolLevelGrade.pu")
+$include("Mana_SchoolLevel.pu")
+$include("Mana_GrantedRoleAccessPath.pu")
+$include("Mana_StudentPaymentDetail.pu")
+$include("Mana_BankBranch.pu")
+$include("Mana_Bank.pu")
+$include("Mana_StudentSchoolCource.pu")
+$include("Mana_SchoolCource.pu")
+note right
+参照Param
+  - school_course_name
+  - school_course_type1
+  - school_course_type2
+end note
+$include("Mana_SchoolInfo.pu")
+note right
+参照Param
+  - school_name
+  - school_type
+  - prefecture
+  - city
+end note
+$include("Mana_StudentSchoolInfo.pu")
+$include("Mana_TaggedStudent.pu")
+$include("Mana_TaggedParent.pu")
+$include("Mana_Student.pu")
+$include("Mana_Parent.pu")
+$include("Mana_StudentAccessPathHistory.pu")
+$include("Mana_UserAccessPath.pu")
+$include("Mana_StudentParent.pu")
+$include("Mana_Permission.pu")
+$include("Mana_PermissionRole.pu")
+$include("Mana_Role.pu")
+$include("Mana_GrantedRole.pu")
+$include("Mana_UserGroup.pu")
+$include("Mana_UserGroupMember.pu")
+$include("Mana_User.pu")
+note right
+参照Param
+  - name
+  - given_name
+  - fname1
+  - fname2
+  - birthday
+  - gender
+  - pref_id
+  - address1
+  - address2
+  - address3
+end note
+$include("Mana_UserAddress.pu")
+$include("Mana_UserPhoneNumber.pu")
+$include("Mana_PhoneNumber.pu")
+$include("Mana_Transportation.pu")
+$include("Mana_Staff.pu")
+
+}
+
+namespace "MasterManagement" as MasterManagement {
+
+$include("Mana_Grade.pu")
+$include("Mana_StudentTag.pu")
+$include("Mana_Location.pu")
+$include("Mana_ParentTag.pu")
+
+}
+
 !include https://github.com/popoposorara/ERP_ER/blob/main/Mana/UserManagement_relation.pu?raw=true
 
 
-ER_StudentRecord ||--|| ER_Student
-ER_StudentRecord ||--|| ER_StudentRecordComment
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
@@ -44,16 +161,24 @@ ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity
 ER_StudentRecordComment ||--|| ER_StudentRecordCommentDisabilityStatus
+ER_StudentRecordComment ||--|| ER_StudentRecordCommentVariousHelpfulContentsInTeaching
 ER_StudentRecordCommentSpecialActivities ||--|| ER_StudentRecordCommentSpecialActivitiesContent
+ER_StudentRecordCommentVariousHelpfulContentsInTeaching  ||--|| ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent
 ER_StudentRecordCommentRecordOfAction ||--|| ER_StudentRecordCommentRecordOfActionContent
+ER_StudentRecord ||--|| ER_StudentRecordComment
+
+ER_StudentRecord ||--|| ER_Student
 ER_StudentRecord ||--|{ ER_Staff
+ER_StudentRecordCommentAttendance ||--o{ ER_Branch
 
 ER_StudentInfo ||--|| ER_Student
 ER_StudentInfo ||--|| ER_Branch
-
 ER_Student ||--|| ER_Customer
+ER_Staff ||--|| ER_UserInfo
+
 ER_Customer ||--|| Mana_User
 ER_Student ||--|| Mana_Student
-ER_Staff ||--|| Mana_Teacher
+ER_Staff ||--|| Mana_Staff
+ER_Branch ||--|| Mana_SchoolInfo
 
 @enduml

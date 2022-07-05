@@ -7,6 +7,8 @@ entity "Mana_SchoolCource" {
     + mana_school_id -> mana_school_id
     + is_archived:アーカイブ済みかどうか
     + resource_path:リソースパス
+    # school_course_type1:学校コース種別<全日制/定時制/通信制>(add)
+    # school_course_type2:学校コース区分<普通/専門/総合>(add)
 }
 
 @enduml

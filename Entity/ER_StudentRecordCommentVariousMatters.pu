@@ -9,7 +9,7 @@ entity "ER_StudentRecordCommentVariousMatters"{
     + :その他
 }
 
-note right
+note bottom
 指導要録（参考様式）における下記の項目で利用
   - 総合所見及び指導上参考となる諸事項
 end note
