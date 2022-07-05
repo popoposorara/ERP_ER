@@ -1,7 +1,7 @@
 @startuml
 
 entity "Mana_Staff" {
-    + mana_staff_id:保護者ID
+    + mana_staff_id:スタッフID
     + auto_create_timesheet
     + resource_path
 }

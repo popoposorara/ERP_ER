@@ -1,0 +1,16 @@
+@startuml
+
+entity "ER_StudentRecordCommentVariousHelpfulContentsInTeaching"{
+    + student_record_comment_special_activities_id:指導上参考となる諸事項ID
+    + :学年<optinal>
+    + :年度<optinal>
+    + student_record_comment_various_helpful_content_in_teaching_content_id:指導上参考となる諸事項の内容ID -> student_record_comment_various_helpful_content_in_teaching_content_id
+    + :内容
+}
+
+note bottom
+調査書（様式）における下記の項目で利用
+  - 指導上参考となる諸事項
+end note
+
+@enduml

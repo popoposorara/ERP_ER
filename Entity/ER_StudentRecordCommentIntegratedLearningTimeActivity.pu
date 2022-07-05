@@ -9,7 +9,7 @@ entity "ER_StudentRecordCommentIntegratedLearningTimeActivity"{
     + :評価
 }
 
-note right
+note bottom
 指導要録（参考様式）における下記の項目で利用
   - 総合的な学習の時間の記録
   - 総合的な探究の時間の記録

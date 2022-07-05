@@ -1,0 +1,19 @@
+@startuml
+
+entity "ER_UserInfo"{
+    + user_id:ユーザID
+    + login_id:ログインID
+    + password:パスワード
+    * password_changed:パスワード変更済みフラグ
+    ~ company_type:本部区分 → (optinal)
+    + user_type:ユーザタイプ -> 1:システム管理者 2:塾ユーザ 3:生徒 4:保護者
+    * active:利用フラグ
+    * deleted:削除フラグ
+    + last_login:最終ログイン日時
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+@enduml

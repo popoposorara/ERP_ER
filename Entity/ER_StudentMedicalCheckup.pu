@@ -1,0 +1,56 @@
+@startuml
+
+entity "ER_StudentMedicalCheckup"{
+    + student_medical_checkup_id:生徒健康診断ID
+    + student_id:該当生徒ID -> student_id
+    + date:健康診断実施日
+    + height:身長<cm>
+    + weight:体重<kg>
+    + seating_height:座高<cm>
+    + right_eyesight:右裸眼視力
+    + right_corrected_eyesight:右矯正視力
+    + left_eyesight:左裸眼視力
+    + left_corrected_eyesight:左矯正視力
+    + right_eyesight_char:右裸眼視力文字
+    + right_corrected_eyesight_char:右矯正視力文字
+    + left_eyesight_char:左裸眼視力文字
+    + left_corrected_eyesight_char:左矯正視力文字
+    + right_hearing:右聴力<db>
+    + right_hearing_status:右聴力状態 → 1:異常なし
+    + left_hearing:左聴力<db>
+    + left_hearing_status:左聴力状態 → 1:異常なし
+    + urine_albuminoid1:尿1次蛋白 → 1:- 2:± 3:+
+    + urine_sugar1:尿1次糖 → 1:- 2:± 3:+
+    + urine_occult_blood1:尿1次潜血 → 1:- 2:± 3:+
+    + urine_albuminoid2:尿2次蛋白 → 1:- 2:± 3:+
+    + urine_sugar2:尿2次糖 → 1:- 2:± 3:+
+    + urine_occult_blood2:尿2次潜血 → 1:- 2:± 3:+
+    + urine_comment:尿その他検査
+    + nutrient_status:栄養状態 → 1:良好
+    + backbone_thoracis:脊柱・胸郭 → 1:異常なし
+    + eye_disorder:目の疾病及び異常 → 1:異常なし
+    + ear_nose_disorder:耳鼻咽頭疾患 → 1:異常なし
+    + skin_disorder:皮膚疾患 → 1:異常なし
+    + heart_clinical_exam:心臓臨床医学検査 → 1:異常なし
+    + heart_disorder:心臓 疾病及び異常 → 1:異常なし
+    + heart_comment:心臓 臨床医学的検査テキスト
+    + tuberculosis_date:結核 間接撮影 撮影日付
+    + tuberculosis_film_no:結核 間接撮影 フィルム番号
+    + tuberculosis_opinion:結核 間接撮影 所見
+    + tuberculosis_other_exam:結核その他検査
+    + tuberculosis_disease:結核病名
+    + tuberculosis_level:結核指導区分
+    + anemia_comment:貧血コメント
+    + anemia_hemoglobin:貧血ヘモグロビン
+    + other_disorder:その他疾病及び異常
+    + school_physician_comment:学校医コメント
+    + school_physician_date:学校医日付
+    + post_management:事後処置
+    + comment:備考
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at更新日時
+    + updated_by:更新者
+}
+
+@enduml

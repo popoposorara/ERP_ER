@@ -1,0 +1,18 @@
+@startuml
+
+entity "ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent"{
+    + student_record_comment_various_helpful_content_in_teaching_content_id:指導上参考となる諸事項の内容ID
+    + name:名称
+}
+
+note bottom
+※名称に指定される文字列
+- 学習における特徴等
+- 行動の特徴，特技等
+- 部活動，ボランティア活動，留学・海外経験等
+- 取得資格，検定等
+- 表彰・顕彰等の記録
+- その他
+end note
+
+@enduml

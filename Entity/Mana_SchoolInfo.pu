@@ -9,6 +9,7 @@ entity "Mana_SchoolInfo" {
     + city
     + is_archived:アーカイブ済みかどうか
     + resource_path:リソースパス
+    # school_type:学校種別<国立/私立/公立>(add)
 }
 
 @enduml

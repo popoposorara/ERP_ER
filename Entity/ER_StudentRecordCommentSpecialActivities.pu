@@ -8,7 +8,7 @@ entity "ER_StudentRecordCommentSpecialActivities"{
     + :評価
 }
 
-note right
+note bottom
 指導要録（参考様式）における下記の項目で利用
   - 特別活動の記録
 end note
