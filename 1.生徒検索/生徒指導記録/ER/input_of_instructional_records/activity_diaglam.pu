@@ -1,0 +1,18 @@
+@startuml
+start
+
+repeat :Display screen;
+  :Click Edit Button;
+  
+  repeat :New creation screen;
+    :Click Edit Button;
+    :New creation screen;
+  repeat while (Click Cancel Button)
+repeat while (Click Cancel Button)
+
+
+
+
+end
+@enduml
+
