@@ -1,0 +1,7 @@
+@startuml
+
+entity "ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent"{
+    + student_record_comment_various_helpful_content_in_teaching_content_id
+    + name
+}
+@enduml

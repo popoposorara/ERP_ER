@@ -2,9 +2,9 @@
 
 entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
     + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :内容
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + content:内容
 }
 
 note bottom

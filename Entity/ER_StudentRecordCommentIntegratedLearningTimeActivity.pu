@@ -2,11 +2,11 @@
 
 entity "ER_StudentRecordCommentIntegratedLearningTimeActivity"{
     + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :学習活動
-    + :観点
-    + :評価
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + learningActivities:学習活動
+    + Perspective:観点
+    + Evaluation:評価
 }
 
 note bottom

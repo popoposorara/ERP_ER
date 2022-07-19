@@ -1,0 +1,18 @@
+@startuml
+
+entity "ER_StudentRecordComment"{
+    + student_record_comment_id
+    + student_record_comment_integrated_learning_time_activity_id
+    + student_record_comment_special_activities_id
+    + student_record_comment_various_matters_id
+    + student_record_comment_attendance_id
+    + student_record_comment_disability_status_id
+    + student_record_comment_recode_of_action_id
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id
+    + student_record_comment_recode_of_independence_activity_id
+    + student_medical_checkup_id
+    + student_strengths_id
+    + comment
+}
+
+@enduml

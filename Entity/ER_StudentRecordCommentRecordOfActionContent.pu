@@ -2,7 +2,7 @@
 
 entity "ER_StudentRecordCommentRecordOfActionContent"{
     + student_record_comment_recode_of_action_content_id:行動の記録の内容ID
-    + :項目名
+    + itemName:項目名
 }
 
 note bottom

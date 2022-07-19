@@ -2,10 +2,10 @@
 
 entity "ER_StudentRecordCommentRecordOfAction"{
     + student_record_comment_recode_of_action_id:行動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
+    + grade:学年<optinal>
+    + year:年度<optinal>
     + student_record_comment_recode_of_action_content_id:項目ID -> student_record_comment_recode_of_action_content_id
-    + :評価
+    + Evaluation:評価
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用

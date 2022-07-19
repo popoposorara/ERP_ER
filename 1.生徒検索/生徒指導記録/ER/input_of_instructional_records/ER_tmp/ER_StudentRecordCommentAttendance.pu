@@ -1,0 +1,23 @@
+@startuml
+
+entity "ER_StudentRecordCommentAttendance"{
+    + student_record_comment_attendance_id
+    + student_id
+    + year
+    + school_type
+    + lesson_num
+    + rest_num
+    + suspend_num
+    + mourning_num
+    + abroad_num
+    + abs_illness_num
+    + abs_accident_num1
+    + abs_accident_num2
+    + remarks
+    + created_at
+    + created_by
+    + updated_at
+    + updated_by
+}
+
+@enduml

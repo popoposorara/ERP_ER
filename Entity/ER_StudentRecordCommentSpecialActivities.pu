@@ -2,10 +2,10 @@
 
 entity "ER_StudentRecordCommentSpecialActivities"{
     + student_record_comment_special_activities_id:特別活動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
+    + grade:学年<optinal>
+    + year:年度<optinal>
     + student_record_comment_special_activities_content_id:特別活動の記録の内容ID -> student_record_comment_special_activities_content_id
-    + :評価
+    + Evaluation:評価
 }
 
 note bottom

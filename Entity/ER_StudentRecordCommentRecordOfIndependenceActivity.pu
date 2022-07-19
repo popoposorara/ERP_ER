@@ -2,9 +2,9 @@
 
 entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
     + student_record_comment_recode_of_independence_activity_id:自立活動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :内容
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + content:内容
 }
 
 note bottom
