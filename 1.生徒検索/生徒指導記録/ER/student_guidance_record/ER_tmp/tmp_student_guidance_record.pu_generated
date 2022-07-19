@@ -1,0 +1,77 @@
+@startuml
+hide empty members
+
+!procedure $include($source)
+  !include $source
+!endprocedure
+
+namespace "student_interview_record" as student_interview_record {
+
+entity "ER_Interview_way"{
+    + interview_way_id:面談方法ID
+    + name:名称
+}
+note bottom
+※名称に指定される文字列
+- 面談
+- 電話
+- その他
+end note
+
+entity "ER_Interview_type"{
+    + interview_type_id:面談区分ID
+    + name:面談区分名称
+    ~ sort:並び順  → (optinal)
+    ~ deleted:削除フラグ  → (optinal)
+    ~ created_at:登録日時  → (optinal)
+    ~ created_by:登録者  → (optinal)
+    ~ updated_at:更新日時  → (optinal)
+    ~ updated_by:更新者  → (optinal)
+}
+note bottom
+※名称に指定される文字列
+- 報告・連絡
+- 相談
+end note
+
+entity "ER_Interview_target_type"{
+    + interview_target_type_id:面談対象ID
+    + name:名称
+}
+note bottom
+※名称に指定される文字列
+- 生徒
+- 母親
+- 父親
+- 生徒+母親
+- 生徒+父親
+- 母親+父親
+- 生徒+母親+父親
+- その他
+end note
+
+entity "ER_Interview"{
+    + interview_id:生徒指導記録ID
+    + student_id:生徒ID -> student_id
+    + staff_id:担当者 -> staff_id
+    + branch_id:校ID -> branch_id
+    + interview_date:面談日時
+    + interview_way_id:面談方法ID -> interview_way_id
+    + interview_type_id:面談区分ID -> interview_type_id
+    + interview_target_type_id:面談対象ID -> interview_target_type_id
+    + comment:内容
+    ~ claim:クレーム  → (optinal)
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
+}
+
+
+}
+
+ER_Interview ||--|| ER_Interview_way
+ER_Interview ||--|| ER_Interview_type
+ER_Interview ||--|| ER_Interview_target_type
+
+@enduml
