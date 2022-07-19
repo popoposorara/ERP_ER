@@ -1,0 +1,15 @@
+@startuml
+
+entity "ER_Interview_way"{
+    + interview_way_id:面談方法ID
+    + name:名称
+}
+
+note bottom
+※名称に指定される文字列
+- 面談
+- 電話
+- その他
+end note
+
+@enduml

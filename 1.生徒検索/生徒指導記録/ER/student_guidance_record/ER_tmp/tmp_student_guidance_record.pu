@@ -1,0 +1,21 @@
+@startuml
+hide empty members
+
+!procedure $include($source)
+  !include $source
+!endprocedure
+
+namespace "student_interview_record" as student_interview_record {
+
+$include("ER_Interview_way.pu")
+$include("ER_Interview_type.pu")
+$include("ER_Interview_target_type.pu")
+$include("ER_Interview.pu")
+
+}
+
+ER_Interview ||--|| ER_Interview_way
+ER_Interview ||--|| ER_Interview_type
+ER_Interview ||--|| ER_Interview_target_type
+
+@enduml

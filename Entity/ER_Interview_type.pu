@@ -3,12 +3,17 @@
 entity "ER_Interview_type"{
     + interview_type_id:面談区分ID
     + name:面談区分名称
-    + sort:並び順
-    + deleted:削除フラグ
-    + created_at:登録日時
-    + created_by:登録者
-    + updated_at:更新日時
-    + updated_by:更新者
+    ~ sort:並び順  → (optinal)
+    ~ deleted:削除フラグ  → (optinal)
+    ~ created_at:登録日時  → (optinal)
+    ~ created_by:登録者  → (optinal)
+    ~ updated_at:更新日時  → (optinal)
+    ~ updated_by:更新者  → (optinal)
 }
 
+note bottom
+※名称に指定される文字列
+- 報告・連絡
+- 相談
+end note
 @enduml

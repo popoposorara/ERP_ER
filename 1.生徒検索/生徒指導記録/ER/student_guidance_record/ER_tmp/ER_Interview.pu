@@ -1,0 +1,19 @@
+@startuml
+
+entity "ER_Interview"{
+    + interview_id
+    + student_id
+    + staff_id
+    + branch_id
+    + interview_date
+    + interview_way_id
+    + interview_type_id
+    + interview_target_type_id
+    + comment
+    + created_at
+    + created_by
+    + updated_at
+    + updated_by
+}
+
+@enduml
