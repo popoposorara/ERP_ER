@@ -1,0 +1,42 @@
+@startuml
+hide empty members
+
+skinparam dpi 100
+
+!procedure $include($source)
+  !include $source
+!endprocedure
+
+namespace "Student Record" as student_record {
+
+$include("ER_StudentRecord.pu")
+$include("ER_StudentRecordComment.pu")
+$include("ER_StudentRecordCommentAttendance.pu")
+$include("ER_StudentRecordCommentIntegratedLearningTimeActivity.pu")
+$include("ER_StudentRecordCommentSpecialActivities.pu")
+$include("ER_StudentRecordCommentSpecialActivitiesContent.pu")
+$include("ER_StudentRecordCommentRecordOfAction.pu")
+$include("ER_StudentRecordCommentRecordOfActionContent.pu")
+$include("ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities.pu")
+$include("ER_StudentRecordCommentRecordOfIndependenceActivity.pu")
+$include("ER_StudentRecordCommentDisabilityStatus.pu")
+$include("ER_StudentRecordCommentVariousHelpfulContentsInTeaching.pu")
+$include("ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent.pu")
+
+}
+
+
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
+ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity
+ER_StudentRecordComment ||--|| ER_StudentRecordCommentDisabilityStatus
+ER_StudentRecordComment ||--|| ER_StudentRecordCommentVariousHelpfulContentsInTeaching
+ER_StudentRecordCommentSpecialActivities ||--|| ER_StudentRecordCommentSpecialActivitiesContent
+ER_StudentRecordCommentVariousHelpfulContentsInTeaching  ||--|| ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent
+ER_StudentRecordCommentRecordOfAction ||--|| ER_StudentRecordCommentRecordOfActionContent
+ER_StudentRecord ||--|| ER_StudentRecordComment
+
+@enduml

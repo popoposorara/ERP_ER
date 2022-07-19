@@ -2,7 +2,7 @@
 
 entity "ER_StudentRecordCommentDisabilityStatus"{
     + student_record_comment_disability_status_id:入学時の障害の状態ID
-    + :内容
+    + content:内容
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用

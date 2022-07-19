@@ -155,7 +155,6 @@ $include("Mana_ParentTag.pu")
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
-ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity

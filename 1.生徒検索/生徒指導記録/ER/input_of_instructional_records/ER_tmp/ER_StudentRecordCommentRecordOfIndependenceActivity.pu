@@ -1,0 +1,9 @@
+@startuml
+
+entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
+    + student_record_comment_recode_of_independence_activity_id
+    + grade
+    + year
+    + content
+}
+@enduml

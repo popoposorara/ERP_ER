@@ -1,0 +1,16 @@
+@startuml
+
+entity "ER_StudentRecord"{
+    + student_record_id
+    + student_id
+    + record_type
+    + term_type
+    + year
+    + comment_id
+    + created_at
+    + created_by
+    + updated_at
+    + updated_by
+}
+
+@enduml

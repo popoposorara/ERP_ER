@@ -1,0 +1,8 @@
+@startuml
+
+entity "ER_StudentRecordCommentDisabilityStatus"{
+    + student_record_comment_disability_status_id
+    + content
+}
+
+@enduml

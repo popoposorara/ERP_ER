@@ -1,0 +1,10 @@
+@startuml
+
+entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
+    + student_record_comment_recode_of_action_for_intellectual_disabilities_id
+    + grade
+    + year
+    + content
+}
+
+@enduml
