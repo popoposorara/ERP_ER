@@ -1,0 +1,8 @@
+@startuml
+
+entity "ER_Interview_target_type"{
+    + interview_target_type_id
+    + name
+}
+
+@enduml

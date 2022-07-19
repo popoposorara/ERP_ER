@@ -1,0 +1,20 @@
+@startuml
+
+entity "ER_Interview_target_type"{
+    + interview_target_type_id:面談対象ID
+    + name:名称
+}
+
+note bottom
+※名称に指定される文字列
+- 生徒
+- 母親
+- 父親
+- 生徒+母親
+- 生徒+父親
+- 母親+父親
+- 生徒+母親+父親
+- その他
+end note
+
+@enduml
