@@ -41,23 +41,22 @@ entity "ER_StudentRecordComment"{
 
 entity "ER_StudentRecordCommentAttendance"{
     + student_record_comment_attendance_id:出席ID
-    + :年度
-    + :欠席日数
-    + :欠席の主な内容
-    + :出校記録
-    + :備考
-    + :内容
-    + :授業日数
-    + :休学日数
-    + :出席停止日数
-    + :忌引き日数
-    + :留学授業日数
-    + :出席しなければならない日数
-    + :病欠日数
-    + :事故欠（届）  
-    + :事故欠（無）
-    + :出席日数
-    + branch_id:学校ID -> branch_id
+    + student_id : 生徒ID
+    + year:年度
+    + school_type:学校区分
+    + lesson_num:授業日数
+    + rest_num:休学日数
+    + suspend_num:出席停止日数
+    + mourning_num:忌引き日数
+    + abroad_num:留学授業日数
+    + abs_illness_num:病欠日数
+    + abs_accident_num1:事故欠<届>
+    + abs_accident_num2:事故欠<無>
+    + remarks:備考
+    + created_at:登録日時
+    + created_by:登録者
+    + updated_at:更新日時
+    + updated_by:更新者
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -79,11 +78,11 @@ end note
 
 entity "ER_StudentRecordCommentIntegratedLearningTimeActivity"{
     + student_record_comment_integrated_learning_time_activity_id:総合的な学習の時間の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :学習活動
-    + :観点
-    + :評価
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + learningActivities:学習活動
+    + Perspective:観点
+    + Evaluation:評価
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -105,10 +104,10 @@ end note
 
 entity "ER_StudentRecordCommentSpecialActivities"{
     + student_record_comment_special_activities_id:特別活動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
+    + grade:学年<optinal>
+    + year:年度<optinal>
     + student_record_comment_special_activities_content_id:特別活動の記録の内容ID -> student_record_comment_special_activities_content_id
-    + :評価
+    + Evaluation:評価
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -148,10 +147,10 @@ end note
 
 entity "ER_StudentRecordCommentRecordOfAction"{
     + student_record_comment_recode_of_action_id:行動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
+    + grade:学年<optinal>
+    + year:年度<optinal>
     + student_record_comment_recode_of_action_content_id:項目ID -> student_record_comment_recode_of_action_content_id
-    + :評価
+    + Evaluation:評価
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -167,7 +166,7 @@ end note
 
 entity "ER_StudentRecordCommentRecordOfActionContent"{
     + student_record_comment_recode_of_action_content_id:行動の記録の内容ID
-    + :項目名
+    + itemName:項目名
 }
 note bottom
 ※項目名に指定される文字列
@@ -185,9 +184,9 @@ end note
 
 entity "ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities"{
     + student_record_comment_recode_of_action_for_intellectual_disabilities_id:知的障害者のための行動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :内容
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + content:内容
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -201,9 +200,9 @@ end note
 
 entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
     + student_record_comment_recode_of_independence_activity_id:自立活動の記録ID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :内容
+    + grade:学年<optinal>
+    + year:年度<optinal>
+    + content:内容
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -218,7 +217,7 @@ end note
 
 entity "ER_StudentRecordCommentDisabilityStatus"{
     + student_record_comment_disability_status_id:入学時の障害の状態ID
-    + :内容
+    + content:内容
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -236,10 +235,10 @@ end note
 
 entity "ER_StudentRecordCommentVariousHelpfulContentsInTeaching"{
     + student_record_comment_special_activities_id:指導上参考となる諸事項ID
-    + :学年<optinal>
-    + :年度<optinal>
+    + grade:学年<optinal>
+    + year:年度<optinal>
     + student_record_comment_various_helpful_content_in_teaching_content_id:指導上参考となる諸事項の内容ID -> student_record_comment_various_helpful_content_in_teaching_content_id
-    + :内容
+    + content:内容
 }
 note bottom
 調査書（様式）における下記の項目で利用
@@ -888,7 +887,6 @@ entity "Mana_ParentTag" {
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentAttendance
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentIntegratedLearningTimeActivity
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentSpecialActivities
-ER_StudentRecordComment ||--o{ ER_StudentRecordCommentVariousMatters
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfAction
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfActionForIntellectualDisabilities
 ER_StudentRecordComment ||--o{ ER_StudentRecordCommentRecordOfIndependenceActivity
