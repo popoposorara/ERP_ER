@@ -146,32 +146,6 @@ note bottom
 - 学校行事
 end note
 
-entity "ER_StudentRecordCommentVariousMatters"{
-    + student_record_comment_various_matters_id:総合所見及び指導上参考となる諸事項のID
-    + :学年<optinal>
-    + :年度<optinal>
-    + :学習における特徴等・行動の特徴、特技等
-    + :部活動・ボランティア活動等・取得資格、特技等
-    + :その他
-}
-note bottom
-指導要録（参考様式）における下記の項目で利用
-  - 総合所見及び指導上参考となる諸事項
-end note
-note bottom
-指導要録（参考様式）における下記で利用
-- 小学校指導要録
-- 中学校指導要録
-- 高等学校（全日制の課程・定時制の課程）指導要録
-- 高等学校（通信制の課程）指導要録
-- ［知的障害者以外の特別支援学校］小学部児童指導要録
-- ［知的障害者以外の特別支援学校］中学部生徒指導要録
-- ［知的障害者以外の特別支援学校］高等部生徒指導要録
-- ［知的障害者］小学部児童指導要録
-- ［知的障害者］中学部生徒指導要録
-- ［知的障害者］高等部生徒指導要録
-end note
-
 entity "ER_StudentRecordCommentRecordOfAction"{
     + student_record_comment_recode_of_action_id:行動の記録ID
     + :学年<optinal>
@@ -230,7 +204,6 @@ entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
     + :学年<optinal>
     + :年度<optinal>
     + :内容
-    + :評価
 }
 note bottom
 指導要録（参考様式）における下記の項目で利用
@@ -272,6 +245,23 @@ note bottom
 調査書（様式）における下記の項目で利用
   - 指導上参考となる諸事項
 end note
+note bottom
+指導要録（参考様式）における下記の項目で利用
+  - 総合所見及び指導上参考となる諸事項
+end note
+note bottom
+指導要録（参考様式）における下記で利用
+- 小学校指導要録
+- 中学校指導要録
+- 高等学校（全日制の課程・定時制の課程）指導要録
+- 高等学校（通信制の課程）指導要録
+- ［知的障害者以外の特別支援学校］小学部児童指導要録
+- ［知的障害者以外の特別支援学校］中学部生徒指導要録
+- ［知的障害者以外の特別支援学校］高等部生徒指導要録
+- ［知的障害者］小学部児童指導要録
+- ［知的障害者］中学部生徒指導要録
+- ［知的障害者］高等部生徒指導要録
+end note
 
 entity "ER_StudentRecordCommentVariousHelpfulContentsInTeachingContent"{
     + student_record_comment_various_helpful_content_in_teaching_content_id:指導上参考となる諸事項の内容ID
@@ -282,7 +272,7 @@ note bottom
 - 学習における特徴等
 - 行動の特徴，特技等
 - 部活動，ボランティア活動，留学・海外経験等
-- 取得資格，検定等
+- 取得資格，検定, 特技等
 - 表彰・顕彰等の記録
 - その他
 end note
