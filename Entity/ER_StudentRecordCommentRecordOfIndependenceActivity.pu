@@ -5,7 +5,6 @@ entity "ER_StudentRecordCommentRecordOfIndependenceActivity"{
     + :学年<optinal>
     + :年度<optinal>
     + :内容
-    + :評価
 }
 
 note bottom
